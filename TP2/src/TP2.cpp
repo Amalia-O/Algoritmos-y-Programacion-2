@@ -6,10 +6,20 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include <iostream>
+#include<iostream>
+#include<sstream>
+#include <fstream>
+#define NOMBRE_ARCHIVO "paradas-de-colectivo.csv"
+
+#include"LecturaParadas.h"
+
 using namespace std;
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+
+	LecturaParadas();
+
+
+
 	return 0;
 }
