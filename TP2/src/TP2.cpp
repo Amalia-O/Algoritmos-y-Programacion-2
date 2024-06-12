@@ -12,6 +12,7 @@
 #define NOMBRE_ARCHIVO "paradas-de-colectivo.csv"
 
 #include"LecturaParadas.h"
+#include "Ubicacion.h"
 
 using namespace std;
 
