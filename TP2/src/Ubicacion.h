@@ -1,7 +1,7 @@
 /*
- * Lista.h
+ * Ubicacion.h
  *
- *  Created on: 22/04/2024
+ *  Created on: 12/06/2024
  *      Author: algo2
  */
 
@@ -10,7 +10,7 @@
 
 #include <string>
 
-class Ubicacion{
+class Ubicacion {
 private:
     float coordenadaX;
     float coordenadaY;
