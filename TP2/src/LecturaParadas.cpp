@@ -20,8 +20,8 @@ LecturaParadas::LecturaParadas() {
 
 	//lectura del encabezado
 	getline(archivo,linea);
-
-	while(getline(archivo, linea)){
+	int contador = 10;
+	while(getline(archivo, linea) && contador != 0){
 
 		std::stringstream stream(linea); //convierto cadena en stream
 
@@ -45,7 +45,30 @@ LecturaParadas::LecturaParadas() {
 		getline(stream, l5Sen, delimitador);
 		getline(stream, L6, delimitador);
 		getline(stream, l6Sen, delimitador);
-		}
+
+		//PRUEBA:
+		std::cout << "===================="<< std::endl;
+		std::cout << "Entrada: " << 10-contador << std::endl;
+		std::cout << "Calle: " << calle << std::endl;
+		std::cout << "altPlano: " << altPlano << std::endl;
+		std::cout << "Direccion: " << direccion << std::endl;
+		std::cout << "CoordX: " << coordX << std::endl;
+		std::cout << "CoordY: " << coordY << std::endl;
+		std::cout << "Comuna: " << comuna << std::endl;
+		std::cout << "Barrio: " << barrio << std::endl;
+		std::cout << "L1: " << L1 << std::endl;
+		std::cout << "L1_sen: " << l1Sen << std::endl;
+		std::cout << "L2: " << L2 << std::endl;
+		std::cout << "L2_sen: " << l2Sen << std::endl;
+		std::cout << "L3: " << L3 << std::endl;
+		std::cout << "L3_sen: " << l3Sen << std::endl;
+		std::cout << "L4: " << L4 << std::endl;
+		std::cout << "L4_sen: " << l4Sen << std::endl;
+		std::cout << "L5: " << l5Sen << std::endl;
+		std::cout << "L6: " << L6 << std::endl;
+		std::cout << "L6_sen: " << l6Sen << std::endl;
+		contador--;
+	}
 
 	archivo.close();
 }
