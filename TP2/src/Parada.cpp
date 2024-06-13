@@ -1,7 +1,8 @@
 #include "Parada.h"
+#include<iostream>
 
 Parada::Parada(Ubicacion * ubicacion, Lista<unsigned int> * colectivos) {
-    if (ubicacion == nullptr || colectivos == nullptr || colectivos->estaVacia()) {
+    if (ubicacion == NULL || colectivos == NULL || colectivos->estaVacia()) {
         throw "Proporcionar ubicacion y colectivos no vacía.";
     }
     this->ubicacion = ubicacion;
@@ -33,14 +34,14 @@ Lista<unsigned int> * Parada::getColectivos() {
 }
 
 void Parada::setUbicacion(Ubicacion * ubicacion) {
-    if (ubicacion == nullptr) {
+    if (ubicacion == NULL) {
         throw "Proporcionar ubicacion no nula.";
     }
     this->ubicacion = ubicacion;
 }
 
 void Parada::setColectivos(Lista <unsigned int> * colectivos) {
-    if (colectivos == nullptr || colectivos->estaVacia()) {
+    if (colectivos == NULL || colectivos->estaVacia()) {
         throw "Proporcionar lista no nula o no vacía.";
     }
     this->colectivos = colectivos;
