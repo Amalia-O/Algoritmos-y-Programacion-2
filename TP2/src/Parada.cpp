@@ -8,6 +8,11 @@ Parada::Parada(Ubicacion * ubicacion, Lista<unsigned int> * colectivos) {
     this->colectivos = colectivos;
 }
 
+Parada::Parada(Ubicacion * ubicacion) {
+    this->ubicacion = ubicacion;
+    this->colectivos = new Lista<unsigned int>();
+}
+
 Parada::Parada(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano) {
     Ubicacion * ubicacion = new Ubicacion(coordenadaX, coordenadaY, calle, altitudPlano);
     this->ubicacion = ubicacion;

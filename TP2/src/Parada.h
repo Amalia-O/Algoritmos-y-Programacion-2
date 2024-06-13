@@ -24,8 +24,14 @@ public:
     Parada(Ubicacion * ubicacion, Lista<unsigned int>  * colectivos);
 
     /*
+     * PRE: ubicacion no nula
+     * POS: inicia el objeto con ubicacion, y lista de colectivos vacía.
+    */
+    Parada(Ubicacion * ubicacion);
+
+    /*
      * PRE: parametros no nulos.
-     * POS: inicia el objeto con ubicacion, y lista de colectivos vacia
+     * POS: inicia el objeto con ubicacion segun parametros, y lista de colectivos vacia
     */
     Parada(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano);
     
