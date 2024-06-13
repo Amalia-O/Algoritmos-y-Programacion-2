@@ -1,7 +1,7 @@
 #include "Ubicacion.h"
 
 Ubicacion::Ubicacion(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano) {
-    //validar(?)
+    //TODO validar(?)
     this->coordenadaX = coordenadaX;
     this->coordenadaY = coordenadaY;
     this->calle = calle;

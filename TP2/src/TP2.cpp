@@ -19,8 +19,6 @@ using namespace std;
 int main() {
 
 	LecturaParadas();
-
-
-
+	
 	return 0;
 }
