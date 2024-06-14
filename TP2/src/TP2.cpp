@@ -117,7 +117,60 @@ void iniciarConsola() {
 
 int main() {
 
-	LecturaParadas();
 	//iniciarConsola();
+
+	ifstream archivo(NOMBRE_ARCHIVO);
+	char delimitador = ',';
+	string linea, calle, direccion, barrio, barrioControl, coordX, coordY, altPlano, comuna, L1, l1Sen;
+
+
+	//Lista<Barrio*> * indice = new Lista<Barrio*>();
+
+	//lectura del encabezado
+	getline(archivo,linea);
+
+	Barrio * barrioLista;
+	Parada * parada;
+
+	barrioControl = "";
+
+	while(getline(archivo, linea)){
+		stringstream stream(linea); //convierto cadena en stream
+
+		//extraigo todos los valores
+		getline(stream, calle, delimitador);
+		getline(stream, altPlano, delimitador);
+		getline(stream, direccion, delimitador);
+		getline(stream, coordX, delimitador);
+		getline(stream, coordY, delimitador);
+		getline(stream, comuna, delimitador);
+		getline(stream, barrio, delimitador);
+
+		if(barrioControl != barrio){
+			//indice->agregar(barrioLista);
+			//barrioLista = new Barrio(barrio, (unsigned int)atof(comuna.c_str()));
+			barrioControl = barrio;
+		}
+
+		//parada = new Parada( (float)atof(coordX.c_str()), (float)atof(coordY.c_str()), calle, (float)atof(altPlano.substr(1, altPlano.size()-2).c_str()));
+
+		for(unsigned int i=0; i< 6; i++){
+			getline(stream, L1, delimitador);
+			getline(stream, l1Sen, delimitador);
+			if(L1 != ""){
+				L1 = L1.substr(1, L1.size()-2);
+				//parada->agregarColectivo((unsigned int)atof(L1.c_str()));
+			}
+		}
+
+		//barrioLista->agregarParada(parada);
+
+	}
+
+	//delete(barrioLista);
+	//delete(parada);
+	//delete(indice);
+
+	archivo.close();
 	return 0;
 }
