@@ -228,12 +228,19 @@ template<class T> T Lista<T>::obtenerCursor() {
 }
 
 template<class T> void Lista<T>::concatenarLista(Lista<T> * lista) {
-	//TODO chequear q me deje acceder a lista->primero (es private pero esta dentro del objeto.)
-	//Voy al ultimo nodo de la lista y hago que apunte al primero de la lista parametro -> concateno!
-	this->obtenerNodo(this->tamanio)->setSiguiente(lista->primero);
-	//Hago que la lista parametro apunte a NULL para no borrar sus contenidos.
-	lista->primero == NULL;
+	if (this->estaVacia()) {
+		//Si esta vacia simplemente reemplazo una lista por la otra.
+		this->primero = lista->primero;
+	}
+	else {
+		//Voy al ultimo nodo de la lista y hago que apunte al primero de la lista parametro -> concateno!
+		this->obtenerNodo(this->tamanio)->setSiguiente(lista->primero);
+	}
+	this->tamanio = this->tamanio + lista->getTamanio();
+	//Hago que la lista parametro apunte a NULL para no borrar sus contenidos, solo su referencia.
+	lista->primero = NULL;
 	delete lista;
 }
+
 
 #endif /* LISTA_H_ */
