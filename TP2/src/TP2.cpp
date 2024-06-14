@@ -15,6 +15,7 @@
 #include "Parada.h"
 #include "Barrio.h"
 #include "Lista.h"
+#include "Ciudad.h"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ void incisoDos() {
 
 void incisoTres() {
 	//TODO implementar funcion
-	cout << "Accediste a inciso tres" << endl;
+	//3) Listado de paradas de una linea de colectivo
 }
 
 void incisoCuatro() {
@@ -119,7 +120,6 @@ void iniciarConsola() {
 
 int main() {
 
-	
 	/*	Se inicia por leer el archivo .csv y armar una lista con indice de barrios	
 		donde cada uno tiene una lista de paradas de colectivo						*/
 	ifstream archivo(NOMBRE_ARCHIVO);
@@ -148,7 +148,7 @@ int main() {
 		getline(stream, coordY, delimitador);
 		getline(stream, comuna, delimitador);
 		getline(stream, barrio, delimitador);
-		
+
 		if(barrioControl != barrio){
 			//indice->agregar(barrioLista);
 			//barrioLista = new Barrio(barrio, (unsigned int)atof(comuna.c_str()));

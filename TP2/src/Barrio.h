@@ -78,6 +78,14 @@ public:
      * POS: agrega la parada al final de la lista de paradas.
     */
     void agregarParada(Parada * parada);
+
+    /*
+     * PRE: parametro no nulo.
+     * POS: devuelve una lista con todas las paradas de la linea de colectivo en el barrio.
+     *      Si no hay ninguna devuelve una lista vacia.
+    */
+    Lista<Parada*> * buscarParadasDeLinea(unsigned int colectivo);
+
 } ;
 
 #endif /* BARRIO_H_ */

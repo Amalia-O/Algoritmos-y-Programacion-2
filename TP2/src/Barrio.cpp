@@ -48,3 +48,19 @@ void Barrio::setComuna(unsigned int comuna) {
 void Barrio::agregarParada(Parada * parada) {
     this->paradas->agregar(parada);
 }
+
+Lista<Parada*> * Barrio::buscarParadasDeLinea(unsigned int colectivo) {
+    if (colectivo == 0 ) {
+        throw "Ingresar linea de colectivo distinta de 0";
+    }
+    Lista<Parada*> * resultado = new Lista<Parada*>();
+    Parada * parada;
+    this->paradas->iniciarCursor();
+    while(this->paradas->avanzarCursor()) { //Recorro todas las paradas del barrio.
+        parada = this->paradas->obtenerCursor();
+        if (parada->colectivoEsta(colectivo)) {
+            resultado->agregar(parada); //Si el colectivo frena en la parada lo agrego a la lista.
+        }
+    }
+    return resultado;
+}

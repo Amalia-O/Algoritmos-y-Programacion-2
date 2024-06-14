@@ -71,6 +71,11 @@ public:
     */
    void agregarColectivo(unsigned int colectivo);
 
+    /*
+     * PRE: parametro no nulo.
+     * POS: devuelve true si el colectivo esta en la parada.
+    */
+    bool colectivoEsta(unsigned int colectivo);
 
 } ;
 

@@ -52,3 +52,18 @@ void Parada::agregarColectivo(unsigned int colectivo) {
     }
     this->colectivos->agregar(colectivo);
 }
+
+bool Parada::colectivoEsta(unsigned int colectivo) {
+    if (colectivo == 0) {
+        throw "Proporcionar colectivo no nulo.";
+    }
+    bool resultado = false;
+    this->colectivos->iniciarCursor();
+    while(this->colectivos->avanzarCursor() && (!resultado)) //Recorro hasta que se termine la lista o encuentre el colectivo.
+    {
+        if (colectivo = this->colectivos->obtenerCursor()) {
+            resultado = true;
+        }
+    }
+    return resultado;
+}
