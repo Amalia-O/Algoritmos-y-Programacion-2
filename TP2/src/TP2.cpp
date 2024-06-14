@@ -11,8 +11,10 @@
 #include <fstream>
 #define NOMBRE_ARCHIVO "paradas-de-colectivo.csv"
 
-#include"LecturaParadas.h"
 #include "Ubicacion.h"
+#include "Parada.h"
+#include "Barrio.h"
+#include "Lista.h"
 
 using namespace std;
 
