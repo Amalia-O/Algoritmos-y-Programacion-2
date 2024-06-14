@@ -119,8 +119,9 @@ void iniciarConsola() {
 
 int main() {
 
-	//iniciarConsola();
-
+	
+	/*	Se inicia por leer el archivo .csv y armar una lista con indice de barrios	
+		donde cada uno tiene una lista de paradas de colectivo						*/
 	ifstream archivo(NOMBRE_ARCHIVO);
 	char delimitador = ',';
 	string linea, calle, direccion, barrio, barrioControl, coordX, coordY, altPlano, comuna, L1, l1Sen;
@@ -147,7 +148,7 @@ int main() {
 		getline(stream, coordY, delimitador);
 		getline(stream, comuna, delimitador);
 		getline(stream, barrio, delimitador);
-
+		
 		if(barrioControl != barrio){
 			//indice->agregar(barrioLista);
 			//barrioLista = new Barrio(barrio, (unsigned int)atof(comuna.c_str()));
@@ -169,10 +170,17 @@ int main() {
 
 	}
 
+	/*	Una vez que se termino de leer el archivo se lo cierra	*/
+	archivo.close();
+
+	/*	Se realizan las queries al usuario	*/
+	//iniciarConsola();
+
+	/*	Se libera el heap	*/
 	//delete(barrioLista);
 	//delete(parada);
 	//delete(indice);
 
-	archivo.close();
+	
 	return 0;
 }
