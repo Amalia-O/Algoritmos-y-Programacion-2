@@ -21,6 +21,10 @@ using namespace std;
 
 void incisoUno() {
 	//TODO implementar funcion
+	// 1) Listado de cantidad de paradas por barrio
+	// Falta hacer la parte de la consola donde se imprimen los resultados
+	// Recorrer todos los barrios de Ciudad 
+	// y usar funcion Barrio->getCantidadDeParadas()
 	cout << "Accediste a inciso uno" << endl;
 }
 
@@ -32,6 +36,10 @@ void incisoDos() {
 void incisoTres() {
 	//TODO implementar funcion
 	//3) Listado de paradas de una linea de colectivo
+	// Ya están todos los métodos de las clases programados
+	// Falta hacer la parte de la consola donde se pide la linea
+	// y se imprimen los resultados
+	// usar funcion Ciudad->buscarParadas(u int lineaDeColectivo)
 }
 
 void incisoCuatro() {

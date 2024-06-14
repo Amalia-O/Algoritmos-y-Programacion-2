@@ -64,3 +64,7 @@ Lista<Parada*> * Barrio::buscarParadasDeLinea(unsigned int colectivo) {
     }
     return resultado;
 }
+
+unsigned int Barrio::getCantidadDeParadas() {
+    return this->paradas->getTamanio();
+}

@@ -86,6 +86,12 @@ public:
     */
     Lista<Parada*> * buscarParadasDeLinea(unsigned int colectivo);
 
+    /*
+     * PRE: -
+     * POS: devuelve la cantidad total de paradas en el barrio.
+    */
+    unsigned int getCantidadDeParadas();
+
 } ;
 
 #endif /* BARRIO_H_ */
