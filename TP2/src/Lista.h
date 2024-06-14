@@ -100,6 +100,14 @@ public:
 	 */
 	T obtenerCursor();
 
+	//TODO probar con valgrind que esta función no dé memory leaks (la programe para que no los tenga, pero talvez tiene...)
+	/*
+	 * pre : se proporciona una lista no vacia.
+	 * post: concatena los contenidos de la lista parámetro al final de
+	 * 		 la lista en cuestión. La lista parámetro es eliminada.
+	 */
+	void concatenarLista(Lista<T> * lista);
+
 private:
 
     /*
@@ -204,7 +212,7 @@ template<class T> bool Lista<T>::avanzarCursor() {
     if (this->cursor == NULL) {
         this->cursor = this->primero;
     } else {
-        this->cursor = this->cursor->obtenerSiguiente();
+        this->cursor = this->cursor->getSiguiente();
     }
 
     /* pudo avanzar si el cursor ahora apunta a un nodo */
@@ -214,10 +222,18 @@ template<class T> bool Lista<T>::avanzarCursor() {
 template<class T> T Lista<T>::obtenerCursor() {
     T elemento;
     if (this->cursor != NULL) {
-        elemento = this->cursor->obtenerDato();
+        elemento = this->cursor->getDato();
     }
     return elemento;
 }
 
+template<class T> void Lista<T>::concatenarLista(Lista<T> * lista) {
+	//TODO chequear q me deje acceder a lista->primero (es private pero esta dentro del objeto.)
+	//Voy al ultimo nodo de la lista y hago que apunte al primero de la lista parametro -> concateno!
+	this->obtenerNodo(this->tamanio)->setSiguiente(lista->primero);
+	//Hago que la lista parametro apunte a NULL para no borrar sus contenidos.
+	lista->primero == NULL;
+	delete lista;
+}
 
 #endif /* LISTA_H_ */
