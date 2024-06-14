@@ -1,5 +1,4 @@
 #include "Parada.h"
-#include<iostream>
 
 Parada::Parada(Ubicacion * ubicacion, Lista<unsigned int> * colectivos) {
     if (ubicacion == NULL || colectivos == NULL || colectivos->estaVacia()) {
