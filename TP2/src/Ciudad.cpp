@@ -18,8 +18,8 @@ void Ciudad::setBarrios(Lista<Barrio*> * barrios) {
     this->barrios = barrios;
 }
 
-bool Ciudad::barrioEnLista(Barrio * barrio) {
-    std::string nombre = barrio->getNombre();
+bool Ciudad::barrioEnLista(std::string nombre) {
+
     bool resultado = false;
     this->barrios->iniciarCursor();
     while(this->barrios->avanzarCursor() && (!resultado)) {
@@ -34,7 +34,8 @@ bool Ciudad::barrioEnLista(Barrio * barrio) {
 }
 
 void Ciudad::agregarBarrio(Barrio * barrio) {
-    if (this->barrioEnLista(barrio)) {
+
+	if (this->barrioEnLista(barrio->getNombre())) {
         throw "El barrio ya esta en la lista";
     }
     this->barrios->agregar(barrio);
@@ -53,3 +54,21 @@ Lista<Parada*> * Ciudad::buscarParadas(unsigned int colectivo) {
     }
     return resultado;
 }
+
+
+void Ciudad::agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Parada * parada){
+
+	this->getBarrios()->iniciarCursor();
+	while(this->getBarrios()->avanzarCursor()){
+
+		if(this->getBarrios()->obtenerCursor()->getNombre()== barrio  && this->getBarrios()->obtenerCursor()->getComuna()== comuna ){
+			this->getBarrios()->obtenerCursor()->agregarParada(parada);
+		}
+	}
+}
+
+
+
+
+
+

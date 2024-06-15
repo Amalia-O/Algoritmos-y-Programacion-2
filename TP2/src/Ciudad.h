@@ -43,7 +43,7 @@ public:
      * PRE: -
      * POS: devuelve true si el nombre del barrio ya esta en la lista.
     */
-    bool barrioEnLista(Barrio * barrio);
+    bool barrioEnLista(std::string nombre);
 
     /*
      * PRE: el barrio a agregar no esta en la lista.
@@ -57,6 +57,12 @@ public:
      *      Si no hay ninguna devuelve una lista vacia.
     */
     Lista<Parada*> * buscarParadas(unsigned int colectivo);
+
+    /*
+     * PRE: el barrio a agregar no esta en la lista.
+     * POS: agrega el barrio al final de la lista.
+    */
+    void agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Parada *parada);
      
 
 };

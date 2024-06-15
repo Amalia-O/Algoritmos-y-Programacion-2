@@ -7,15 +7,17 @@
 //============================================================================
 
 #include<iostream>
+#include<string>
 #include<sstream>
-#include <fstream>
+#include<fstream>
+#include<cstdlib>
 #define NOMBRE_ARCHIVO "paradas-de-colectivo.csv"
 
-#include "Ubicacion.h"
-#include "Parada.h"
-#include "Barrio.h"
-#include "Lista.h"
-#include "Ciudad.h"
+#include"Lista.h"
+#include"Ciudad.h"
+#include"Ubicacion.h"
+#include"Parada.h"
+#include"Barrio.h"
 
 using namespace std;
 
@@ -132,16 +134,17 @@ int main() {
 		donde cada uno tiene una lista de paradas de colectivo						*/
 	ifstream archivo(NOMBRE_ARCHIVO);
 	char delimitador = ',';
-	string linea, calle, direccion, barrio, barrioControl, coordX, coordY, altPlano, comuna, L1, l1Sen;
+	string linea, calle, direccion, nombreBarrio, barrioControl, coordX,
+		coordY, altPlano, comuna, L1, l1Sen;
 
 
-	//Lista<Barrio*> * indice = new Lista<Barrio*>();
+	Ciudad * buenosAires = new Ciudad();
 
 	//lectura del encabezado
 	getline(archivo,linea);
 
-	Barrio * barrioLista;
-	Parada * parada;
+	Barrio * barrio;
+	Parada * parada ;
 
 	barrioControl = "";
 
@@ -155,40 +158,48 @@ int main() {
 		getline(stream, coordX, delimitador);
 		getline(stream, coordY, delimitador);
 		getline(stream, comuna, delimitador);
-		getline(stream, barrio, delimitador);
+		getline(stream, nombreBarrio, delimitador);
 
-		if(barrioControl != barrio){
-			//indice->agregar(barrioLista);
-			//barrioLista = new Barrio(barrio, (unsigned int)atof(comuna.c_str()));
-			barrioControl = barrio;
-		}
 
-		//parada = new Parada( (float)atof(coordX.c_str()), (float)atof(coordY.c_str()), calle, (float)atof(altPlano.substr(1, altPlano.size()-2).c_str()));
+		parada = new Parada( (float)atof(coordX.c_str()), (float)atof(coordY.c_str()), calle, (float)atof(altPlano.c_str()));
 
 		for(unsigned int i=0; i< 6; i++){
 			getline(stream, L1, delimitador);
 			getline(stream, l1Sen, delimitador);
 			if(L1 != ""){
-				L1 = L1.substr(1, L1.size()-2);
-				//parada->agregarColectivo((unsigned int)atof(L1.c_str()));
+				parada->agregarColectivo((unsigned int)atof(L1.c_str()));
 			}
 		}
 
-		//barrioLista->agregarParada(parada);
+		if(buenosAires->barrioEnLista(nombreBarrio)){
+			buenosAires->agregarParadaAlBarrio(nombreBarrio, (unsigned int)atof(comuna.c_str()), parada);
+		}else{
+			barrio = new Barrio(nombreBarrio, (unsigned int)atof(comuna.c_str()) );
+			barrio->agregarParada(parada);
+			buenosAires->agregarBarrio(barrio);
+		}
+
+
+		//delete(parada);
 
 	}
 
-	/*	Una vez que se termino de leer el archivo se lo cierra	*/
+	/*
+	 * si el test de abajo anduvo entonces anda todi
+	 */
+	//buenosAires->getBarrios()->iniciarCursor();
+	//while(buenosAires->getBarrios()->avanzarCursor()){
+	//	buenosAires->getBarrios()->obtenerCursor()->getParadas()->iniciarCursor();
+	//	while(buenosAires->getBarrios()->obtenerCursor()->getParadas()->avanzarCursor())
+	//	cout << buenosAires->getBarrios()->obtenerCursor()->getParadas()->obtenerCursor()->getUbicacion()->getCalle() << endl;
+
+	//}
+
+	delete(barrio);
+	delete(parada);
+	delete(buenosAires);
+
 	archivo.close();
 
-	/*	Se realizan las queries al usuario	*/
-	//iniciarConsola();
-
-	/*	Se libera el heap	*/
-	//delete(barrioLista);
-	//delete(parada);
-	//delete(indice);
-
-	
 	return 0;
 }

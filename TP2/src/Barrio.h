@@ -92,6 +92,7 @@ public:
     */
     unsigned int getCantidadDeParadas();
 
+
 } ;
 
 #endif /* BARRIO_H_ */
