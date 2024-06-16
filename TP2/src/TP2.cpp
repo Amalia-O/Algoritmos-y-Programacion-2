@@ -161,7 +161,7 @@ int main() {
 		getline(stream, nombreBarrio, delimitador);
 
 
-		parada = new Parada( (float)atof(coordX.c_str()), (float)atof(coordY.c_str()), calle, (float)atof(altPlano.c_str()));
+		parada = new Parada( atof(coordX.c_str()), atof(coordY.c_str()), calle, atof(altPlano.c_str()));
 
 		for(unsigned int i=0; i< 6; i++){
 			getline(stream, L1, delimitador);
@@ -171,16 +171,7 @@ int main() {
 			}
 		}
 
-		if(buenosAires->barrioEnLista(nombreBarrio)){
-			buenosAires->agregarParadaAlBarrio(nombreBarrio, (unsigned int)atof(comuna.c_str()), parada);
-		}else{
-			barrio = new Barrio(nombreBarrio, (unsigned int)atof(comuna.c_str()) );
-			barrio->agregarParada(parada);
-			buenosAires->agregarBarrio(barrio);
-		}
-
-
-		//delete(parada);
+		buenosAires->ubicarParada(nombreBarrio, (unsigned int)atoi(comuna.c_str()), parada);
 
 	}
 
@@ -195,7 +186,6 @@ int main() {
 
 	//}
 
-	delete(barrio);
 	delete(parada);
 	delete(buenosAires);
 
