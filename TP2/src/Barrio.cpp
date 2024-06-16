@@ -70,20 +70,26 @@ unsigned int Barrio::getCantidadDeParadas() {
     return this->paradas->getTamanio();
 }
 
-Parada * Barrio::buscarParadaMasCercana(float coordenadaX, float coordenadaY) {
-    Parada * paradaMasCercana = NULL;
-    Parada * parada;
-    float distancia;
-    float distanciaMinima = 0;
-    this->paradas->iniciarCursor();
+Parada * Barrio::buscarParadaMasCercana(float coordenadaX, float coordenadaY){
 
-    while(this->paradas->avanzarCursor()) {
-        parada = this->paradas->obtenerCursor();
-        distancia = this->paradas->obtenerCursor()->calcularDistancia(coordenadaX, coordenadaY);
-        if (distancia < distanciaMinima || distanciaMinima == 0) {
-            distanciaMinima = distancia;
-            paradaMasCercana = parada;
-        }
-    }
-    return paradaMasCercana;
+	Parada * paradaMasCercana;
+	Parada * parada;
+
+	float distancia, distanciaMinima=0;
+
+	this->paradas->iniciarCursor();
+
+
+	while(this->paradas->avanzarCursor()){
+		parada = this->paradas->obtenerCursor();
+		distancia = this->paradas->obtenerCursor()->calcularDistancia(coordenadaX, coordenadaY);
+
+		if(distancia < distanciaMinima || distanciaMinima ==0){
+			distanciaMinima = distancia;
+			paradaMasCercana= parada;
+
+		}
+	}
+
+	return paradaMasCercana;
 }

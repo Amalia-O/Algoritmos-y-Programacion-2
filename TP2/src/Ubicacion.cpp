@@ -1,5 +1,6 @@
 #include "Ubicacion.h"
 #include <cmath>
+#include<iostream>
 
 Ubicacion::Ubicacion(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano) {
     //TODO validar(?)

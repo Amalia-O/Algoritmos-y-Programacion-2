@@ -79,8 +79,8 @@ public:
     void setAltitudPlano(unsigned int altitudPlano);
 
     /*
-     * PRE: parametros no nulos
-     * POS: devuelve la distancia en modulo entre las coordenadas y la ubicacion
+     * PRE: parametros no nulo
+     * POS: devuelve la distancia en modulo
     */
     float calcularDistancia(float coordX, float coordY);
 } ;

@@ -81,7 +81,7 @@ public:
      * PRE: parametros no nulos.
      * POS: devuelve la distancia entre la parada y las coordenadas en modulo.
     */    
-    float calcularDistancia(float coordX, float coordY);
+   float calcularDistancia(float coordX,float coordY);
 
 } ;
 

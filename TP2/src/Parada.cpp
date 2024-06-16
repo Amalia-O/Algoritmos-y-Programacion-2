@@ -62,13 +62,12 @@ bool Parada::colectivoEsta(unsigned int colectivo) {
     this->colectivos->iniciarCursor();
     while(this->colectivos->avanzarCursor() && (!resultado)) //Recorro hasta que se termine la lista o encuentre el colectivo.
     {
-        if (colectivo = this->colectivos->obtenerCursor()) {
+        if (colectivo == this->colectivos->obtenerCursor()) {
             resultado = true;
         }
     }
     return resultado;
 }
-
 
 float Parada::calcularDistancia(float coordX, float coordY) {
     if (coordX == 0 || coordY == 0) {

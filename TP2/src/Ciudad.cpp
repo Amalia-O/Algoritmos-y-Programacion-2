@@ -1,5 +1,7 @@
 #include "Ciudad.h"
 #include <iostream>
+#include"Barrio.h"
+#include "Parada.h"
 
 Ciudad::Ciudad() {
     this->barrios = new Lista<Barrio*>();
@@ -97,28 +99,33 @@ void Ciudad:: ubicarParada(std::string barrio, unsigned int comuna, Parada *para
 }
 
 
- Parada * Ciudad::buscarParadaMasCercana(float coordX, float coordY){
+ Parada* Ciudad::buscarParadaMasCercana(float coordX, float coordY){
 
     if (coordX == 0 || coordY == 0) {
         throw "Proporcionar coordenadas validas";
     }
 
-    Parada * paradaMasCercana = NULL;
+    Parada * paradaAux = NULL;
+    Parada * paradaMasCercana;
     double distancia = 0;
     double distanciaMinima = 0;
     this->barrios->iniciarCursor();
     while(this->barrios->avanzarCursor()) {
-        paradaMasCercana = this->barrios->obtenerCursor()->buscarParadaMasCercana(coordX, coordY);
-        if (paradaMasCercana != NULL) {
-            distancia = paradaMasCercana->calcularDistancia(coordX, coordY);
-            if (distanciaMinima == 0 || distancia < distanciaMinima) {
+        paradaAux = this->barrios->obtenerCursor()->buscarParadaMasCercana(coordX, coordY);
+        if (paradaAux != NULL) {
+
+        	distancia = paradaAux->calcularDistancia(coordX, coordY);
+        	//std::cout << distancia << std::endl;
+        	std::cout << "distancia =" << distancia << std::endl;
+        	if (distanciaMinima == 0 || distancia < distanciaMinima) {
                 distanciaMinima = distancia;
+                paradaMasCercana = paradaAux;
             }
+
         }
     }
     return paradaMasCercana;
  }
-
 
 
 

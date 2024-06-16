@@ -25,7 +25,7 @@ void incisoUno() {
 	//TODO implementar funcion
 	// 1) Listado de cantidad de paradas por barrio
 	// Falta hacer la parte de la consola donde se imprimen los resultados
-	// Recorrer todos los barrios de Ciudad 
+	// Recorrer todos los barrios de Ciudad
 	// y usar funcion Barrio->getCantidadDeParadas()
 	cout << "Accediste a inciso uno" << endl;
 }
@@ -55,7 +55,7 @@ void incisoCinco() {
 }
 
 /*
-POS: muestra por consola las distintas consultas posibles para realizar. 
+POS: muestra por consola las distintas consultas posibles para realizar.
 	 Se devuelve la consulta elegida.
 */
 int consultaConsola() {
@@ -72,10 +72,10 @@ int consultaConsola() {
 	string consulta;
 	int numeroElegido;
 	cin >> consulta;
-	try { //Intento castear la consulta a int. 
-		numeroElegido = stoi(consulta);
+	try { //Intento castear la consulta a int.
+		numeroElegido = atoi(consulta.c_str());
 	}
-	catch (...){ 
+	catch (...){
 		//Si no puedo castear a int, devuelvo -2 para volver a realizar la consulta.
 		numeroElegido = -2;
 	}
@@ -125,7 +125,7 @@ void iniciarConsola() {
 		}
 
 	}
-	
+
 }
 
 int main() {
@@ -133,7 +133,9 @@ int main() {
 	/*	Se inicia por leer el archivo .csv y armar una lista con indice de barrios	
 		donde cada uno tiene una lista de paradas de colectivo						*/
 	ifstream archivo(NOMBRE_ARCHIVO);
+
 	char delimitador = ',';
+
 	string linea, calle, direccion, nombreBarrio, barrioControl, coordX,
 		coordY, altPlano, comuna, L1, l1Sen;
 
@@ -157,22 +159,22 @@ int main() {
 		getline(stream, comuna, delimitador);
 		getline(stream, nombreBarrio, delimitador);
 
-		if(altPlano == ""){
-			if( isdigit(direccion[0]) ){
-				for(unsigned int i=0; (i< direccion.size()) && (direccion[i] == ' '); i++){
+		if(altPlano ==""){
+
+			if(isdigit(direccion[0])){
+				for( int i =0; (i < direccion.size()) &&  (direccion[i]!= ' '); i++){
 					if(isdigit(direccion[i])){
-						altPlano += direccion[i];
+						altPlano+= direccion[i];
+					}
+				}
+			}else if(isdigit(direccion[direccion.size()-1])){
+				for( int i =direccion.size()-1 ; (i>0) &&  (direccion[i]!= ' '); i--){
+					if(isdigit(direccion[i])){
+						altPlano.insert(0,1, direccion[i]);
 					}
 				}
 			}
-		}else if( isdigit(direccion[direccion.size()-1]) ){
-			for(unsigned int i=direccion.size()-1; (i>0 ) && (direccion[i] == ' '); i--){
-				if(isdigit(direccion[i])){
-					altPlano.insert(0,1,direccion[i]);
-				}
-			}
 		}
-		
 
 		parada = new Parada( atof(coordX.c_str()), atof(coordY.c_str()), calle, atof(altPlano.c_str()));
 
@@ -184,11 +186,22 @@ int main() {
 			}
 		}
 
-		if(nombreBarrio !=""){	
+
+		if(nombreBarrio != ""){
 			buenosAires->ubicarParada(nombreBarrio, (unsigned int)atoi(comuna.c_str()), parada);
 		}
-		
+
 	}
+
+	/*
+	 * inciso dos nashe
+	 */
+	//Parada * paradaMasCercana;
+	//paradaMasCercana = buenosAires->buscarParadaMasCercana(-58.376842, -34.60700);
+
+	//cout << paradaMasCercana->getUbicacion()->getCalle() << endl;
+	//cout << paradaMasCercana->getUbicacion()->getAltitudPlano() << endl;
+	//cout << paradaMasCercana->getUbicacion()->getCoordenadaX() << endl;
 
 	/*
 	 * si el test de abajo anduvo entonces anda todi

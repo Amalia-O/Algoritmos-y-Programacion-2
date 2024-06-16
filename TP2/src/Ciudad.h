@@ -10,6 +10,7 @@
 
 #include "Barrio.h"
 #include "Lista.h"
+#include "Parada.h"
 
 class Ciudad {
 private:
@@ -75,7 +76,7 @@ public:
      * PRE: coordenadas validas.
      * POS: devuelve la parada mas cercana a las coordenadas.
     */
-    Parada * buscarParadaMasCercana(float coordX, float coordY);
+    Parada * buscarParadaMasCercana(float coordX, float coodY);
 
 };
 
