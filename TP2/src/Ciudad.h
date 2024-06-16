@@ -65,11 +65,18 @@ public:
     void agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Parada *parada);
      
     /*
-     * PRE: parada no nula.
+     * PRE: parada, barrio y comuna no nula.
      * POS: si el barrio esta en la lista, agrega la parada, sino crea el barrio al final de la lista y le agrega
      * la parada.
     */
     void ubicarParada(std::string barrio, unsigned int comuna, Parada *parada);
+
+    /*
+     * PRE: coordenadas validas.
+     * POS: devuelve la parada mas cercana a las coordenadas.
+    */
+    Parada * buscarParadaMasCercana(float coordX, float coordY);
+
 };
 
 #endif /* CIUDAD_H_ */

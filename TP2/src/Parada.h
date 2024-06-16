@@ -77,6 +77,12 @@ public:
     */
     bool colectivoEsta(unsigned int colectivo);
 
+    /*
+     * PRE: parametros no nulos.
+     * POS: devuelve la distancia entre la parada y las coordenadas en modulo.
+    */    
+    float calcularDistancia(float coordX, float coordY);
+
 } ;
 
 #endif /* PARADA_H_*/

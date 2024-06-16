@@ -1,4 +1,5 @@
 #include "Ubicacion.h"
+#include <cmath>
 
 Ubicacion::Ubicacion(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano) {
     //TODO validar(?)
@@ -44,3 +45,9 @@ void Ubicacion::setAltitudPlano(unsigned int altitudPlano) {
     this->altitudPlano = altitudPlano;
 }
 
+float Ubicacion::calcularDistancia(float coordX, float coordY) {
+    float x1 = this->coordenadaX;
+    float y1 = this->coordenadaY;
+
+    return sqrt(pow(coordX - x1, 2) + pow(coordY - y1, 2));
+}

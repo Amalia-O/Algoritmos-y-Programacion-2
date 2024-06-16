@@ -1,5 +1,6 @@
 #include "Parada.h"
 
+
 Parada::Parada(Ubicacion * ubicacion, Lista<unsigned int> * colectivos) {
     if (ubicacion == NULL || colectivos == NULL || colectivos->estaVacia()) {
         throw "Proporcionar ubicacion y colectivos no vacía.";
@@ -66,4 +67,14 @@ bool Parada::colectivoEsta(unsigned int colectivo) {
         }
     }
     return resultado;
+}
+
+
+float Parada::calcularDistancia(float coordX, float coordY) {
+    if (coordX == 0 || coordY == 0) {
+        throw "Proporcionar coordenadas no nulas.";
+    }
+
+    return this->ubicacion->calcularDistancia(coordX, coordY);   
+
 }

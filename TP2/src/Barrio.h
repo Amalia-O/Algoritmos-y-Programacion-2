@@ -92,6 +92,8 @@ public:
     */
     unsigned int getCantidadDeParadas();
 
+    Parada * buscarParadaMasCercana(float coordenadaX, float coordenadaY);
+
 
 } ;
 

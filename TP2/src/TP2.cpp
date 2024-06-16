@@ -143,10 +143,7 @@ int main() {
 	//lectura del encabezado
 	getline(archivo,linea);
 
-	Barrio * barrio;
 	Parada * parada ;
-
-	barrioControl = "";
 
 	while(getline(archivo, linea)){
 		stringstream stream(linea); //convierto cadena en stream
@@ -171,8 +168,10 @@ int main() {
 			}
 		}
 
-		buenosAires->ubicarParada(nombreBarrio, (unsigned int)atoi(comuna.c_str()), parada);
-
+		if(nombreBarrio !=""){	
+			buenosAires->ubicarParada(nombreBarrio, (unsigned int)atoi(comuna.c_str()), parada);
+		}
+		
 	}
 
 	/*

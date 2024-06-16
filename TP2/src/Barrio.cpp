@@ -1,4 +1,5 @@
 #include "Barrio.h"
+#include "Parada.h"
 
 Barrio::Barrio(std::string nombre, Lista<Parada*> * paradas, unsigned int comuna) {
     //TODO validar(?)
@@ -67,4 +68,22 @@ Lista<Parada*> * Barrio::buscarParadasDeLinea(unsigned int colectivo) {
 
 unsigned int Barrio::getCantidadDeParadas() {
     return this->paradas->getTamanio();
+}
+
+Parada * Barrio::buscarParadaMasCercana(float coordenadaX, float coordenadaY) {
+    Parada * paradaMasCercana = NULL;
+    Parada * parada;
+    float distancia;
+    float distanciaMinima = 0;
+    this->paradas->iniciarCursor();
+
+    while(this->paradas->avanzarCursor()) {
+        parada = this->paradas->obtenerCursor();
+        distancia = this->paradas->obtenerCursor()->calcularDistancia(coordenadaX, coordenadaY);
+        if (distancia < distanciaMinima || distanciaMinima == 0) {
+            distanciaMinima = distancia;
+            paradaMasCercana = parada;
+        }
+    }
+    return paradaMasCercana;
 }

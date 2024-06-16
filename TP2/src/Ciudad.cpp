@@ -97,6 +97,29 @@ void Ciudad:: ubicarParada(std::string barrio, unsigned int comuna, Parada *para
 }
 
 
+ Parada * Ciudad::buscarParadaMasCercana(float coordX, float coordY){
+
+    if (coordX == 0 || coordY == 0) {
+        throw "Proporcionar coordenadas validas";
+    }
+
+    Parada * paradaMasCercana = NULL;
+    double distancia = 0;
+    double distanciaMinima = 0;
+    this->barrios->iniciarCursor();
+    while(this->barrios->avanzarCursor()) {
+        paradaMasCercana = this->barrios->obtenerCursor()->buscarParadaMasCercana(coordX, coordY);
+        if (paradaMasCercana != NULL) {
+            distancia = paradaMasCercana->calcularDistancia(coordX, coordY);
+            if (distanciaMinima == 0 || distancia < distanciaMinima) {
+                distanciaMinima = distancia;
+            }
+        }
+    }
+    return paradaMasCercana;
+ }
+
+
 
 
 
