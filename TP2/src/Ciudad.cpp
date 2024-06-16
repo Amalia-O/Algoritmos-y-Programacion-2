@@ -57,6 +57,15 @@ Lista<Parada*> * Ciudad::buscarParadas(unsigned int colectivo) {
 
 
 void Ciudad::agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Parada * parada){
+    if (parada == NULL) {
+        throw "Proporcionar parada no nula";
+    }
+    if (barrio == "") {
+        throw "Proporcionar nombre de barrio no vacio";
+    }
+    if (comuna == 0) {
+        throw "Proporcionar comuna distinta de 0";
+    }
 
 	this->getBarrios()->iniciarCursor();
 	while(this->getBarrios()->avanzarCursor()){
@@ -65,6 +74,26 @@ void Ciudad::agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Para
 			this->getBarrios()->obtenerCursor()->agregarParada(parada);
 		}
 	}
+}
+
+void Ciudad:: ubicarParada(std::string barrio, unsigned int comuna, Parada *parada){
+    if (parada == NULL) {
+        throw "Proporcionar parada no nula";
+    }
+    if (barrio == "") {
+        throw "Proporcionar nombre de barrio no vacio";
+    }
+    if (comuna == 0) {
+        throw "Proporcionar comuna distinta de 0";
+    }
+
+    if(this->barrioEnLista(barrio)){
+        this->agregarParadaAlBarrio(barrio, comuna, parada);
+    }else{
+        Barrio * nuevoBarrio = new Barrio(barrio, comuna);
+        nuevoBarrio->agregarParada(parada);
+        this->agregarBarrio(nuevoBarrio);
+    }
 }
 
 
