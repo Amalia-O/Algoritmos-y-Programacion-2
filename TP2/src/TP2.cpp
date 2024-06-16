@@ -157,6 +157,22 @@ int main() {
 		getline(stream, comuna, delimitador);
 		getline(stream, nombreBarrio, delimitador);
 
+		if(altPlano == ""){
+			if( isdigit(direccion[0]) ){
+				for(unsigned int i=0; (i< direccion.size()) && (direccion[i] == ' '); i++){
+					if(isdigit(direccion[i])){
+						altPlano += direccion[i];
+					}
+				}
+			}
+		}else if( isdigit(direccion[direccion.size()-1]) ){
+			for(unsigned int i=direccion.size()-1; (i>0 ) && (direccion[i] == ' '); i--){
+				if(isdigit(direccion[i])){
+					altPlano.insert(0,1,direccion[i]);
+				}
+			}
+		}
+		
 
 		parada = new Parada( atof(coordX.c_str()), atof(coordY.c_str()), calle, atof(altPlano.c_str()));
 
