@@ -75,7 +75,7 @@ void incisoUno(Ciudad * ciudad) {
 }
 
 void incisoDos(Ciudad * ciudad) {
-	//TODO implementar funcion
+	// 2) Parada más cercana a una coordenada ingresada por teclado
 	cout << "============================================================================" << endl;
 	//Primero pido las coordenadas que se busquen.
 	bool seguirPreguntando = true;
