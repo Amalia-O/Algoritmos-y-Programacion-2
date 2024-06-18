@@ -12,8 +12,8 @@
 
 class Ubicacion {
 private:
-    float coordenadaX;
-    float coordenadaY;
+    double coordenadaX;
+    double coordenadaY;
     std::string calle;
     unsigned int altitudPlano;
 
@@ -22,7 +22,7 @@ public:
      * PRE: parametros no nulos. Calle escrita todo en mayuscula.
      * POS: construye el objeto.
     */
-    Ubicacion(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano);
+    Ubicacion(double coordenadaX, double coordenadaY, std::string calle, unsigned int altitudPlano);
 
     /*
      * PRE: -
@@ -34,13 +34,13 @@ public:
      * PRE: -
      * POS: devuelve el valor de coordenadaX.
     */
-    float getCoordenadaX();
+    double getCoordenadaX();
 
     /*
      * PRE: -
      * POS: devuelve el valor de coordenadaY
     */
-    float getCoordenadaY();
+    double getCoordenadaY();
 
     /*
      * PRE: -
@@ -58,13 +58,13 @@ public:
      * PRE: parametro no nulo
      * POS: cambia el valor de coordenadaX
     */
-    void setCoordenadaX(float coordenadaX);
+    void setCoordenadaX(double coordenadaX);
 
     /*
      * PRE: parametro no nulo
      * POS: cambia el valor de coordenadaX
     */
-    void setCoordenadaY(float coordenadaY);
+    void setCoordenadaY(double coordenadaY);
 
     /*
      * PRE: parametro no nulo y escrito en mayuscula
@@ -82,7 +82,7 @@ public:
      * PRE: parametros no nulo
      * POS: devuelve la distancia en modulo
     */
-    float calcularDistancia(float coordX, float coordY);
+    double calcularDistancia(double coordX, double coordY);
 } ;
 
 #endif /* UBICACION_H_*/

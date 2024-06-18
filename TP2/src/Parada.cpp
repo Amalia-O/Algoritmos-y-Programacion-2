@@ -14,7 +14,7 @@ Parada::Parada(Ubicacion * ubicacion) {
     this->colectivos = new Lista<unsigned int>();
 }
 
-Parada::Parada(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano) {
+Parada::Parada(double coordenadaX, double coordenadaY, std::string calle, unsigned int altitudPlano) {
     Ubicacion * ubicacion = new Ubicacion(coordenadaX, coordenadaY, calle, altitudPlano);
     this->ubicacion = ubicacion;
     this->colectivos = new Lista<unsigned int>();
@@ -69,7 +69,7 @@ bool Parada::colectivoEsta(unsigned int colectivo) {
     return resultado;
 }
 
-float Parada::calcularDistancia(float coordX, float coordY) {
+double Parada::calcularDistancia(double coordX, double coordY) {
     if (coordX == 0 || coordY == 0) {
         throw "Proporcionar coordenadas no nulas.";
     }

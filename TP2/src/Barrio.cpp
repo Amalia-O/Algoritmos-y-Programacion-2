@@ -80,12 +80,12 @@ unsigned int Barrio::getCantidadDeParadas() {
     return this->paradas->getTamanio();
 }
 
-Parada * Barrio::buscarParadaMasCercana(float coordenadaX, float coordenadaY){
+Parada * Barrio::buscarParadaMasCercana(double coordenadaX, double coordenadaY){
 
 	Parada * paradaMasCercana;
 	Parada * parada;
 
-	float distancia, distanciaMinima=0;
+	double distancia, distanciaMinima=0;
 
 	this->paradas->iniciarCursor();
 

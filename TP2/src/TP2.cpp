@@ -244,13 +244,13 @@ int main() {
 	/*
 	 * inciso dos nashe
 	 */
-	//Parada * paradaMasCercana;
-	//paradaMasCercana = buenosAires->buscarParadaMasCercana(-58.376842, -34.60700);
+	// Parada * paradaMasCercana;
+	// paradaMasCercana = buenosAires->buscarParadaMasCercana(-58.376842, -34.60700);
 
-	//cout << paradaMasCercana->getUbicacion()->getCalle() << endl;
-	//cout << paradaMasCercana->getUbicacion()->getAltitudPlano() << endl;
-	//cout << paradaMasCercana->getUbicacion()->getCoordenadaX() << endl;
-
+	// cout << paradaMasCercana->getUbicacion()->getCalle() << endl;
+	// cout << paradaMasCercana->getUbicacion()->getAltitudPlano() << endl;
+	// cout << paradaMasCercana->getUbicacion()->getCoordenadaX() << endl;
+	// cout << typeid(paradaMasCercana->getUbicacion()->getCoordenadaX()).name() << endl;
 	/*
 	 * si el test de abajo anduvo entonces anda todi
 	 */
@@ -262,7 +262,7 @@ int main() {
 
 	//}
 
-	iniciarConsola(buenosAires);
+	//iniciarConsola(buenosAires);
 
 	delete(parada);
 	delete(buenosAires);

@@ -2,7 +2,7 @@
 #include <cmath>
 #include<iostream>
 
-Ubicacion::Ubicacion(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano) {
+Ubicacion::Ubicacion(double coordenadaX, double coordenadaY, std::string calle, unsigned int altitudPlano) {
     //TODO validar(?)
     this->coordenadaX = coordenadaX;
     this->coordenadaY = coordenadaY;
@@ -14,11 +14,11 @@ Ubicacion::~Ubicacion() {
 
 }
 
-float Ubicacion::getCoordenadaX() {
+double Ubicacion::getCoordenadaX() {
     return this->coordenadaX;
 }
 
-float Ubicacion::getCoordenadaY() {
+double Ubicacion::getCoordenadaY() {
     return this->coordenadaY;
 }
 
@@ -30,11 +30,11 @@ unsigned int Ubicacion::getAltitudPlano() {
     return this->altitudPlano;
 }
 
-void Ubicacion::setCoordenadaX(float coordenadaX) {
+void Ubicacion::setCoordenadaX(double coordenadaX) {
     this->coordenadaX = coordenadaX;
 }
 
-void Ubicacion::setCoordenadaY(float coordenadaY) {
+void Ubicacion::setCoordenadaY(double coordenadaY) {
     this->coordenadaY = coordenadaY;
 }
 
@@ -46,9 +46,9 @@ void Ubicacion::setAltitudPlano(unsigned int altitudPlano) {
     this->altitudPlano = altitudPlano;
 }
 
-float Ubicacion::calcularDistancia(float coordX, float coordY) {
-    float x1 = this->coordenadaX;
-    float y1 = this->coordenadaY;
+double Ubicacion::calcularDistancia(double coordX, double coordY) {
+    double x1 = this->coordenadaX;
+    double y1 = this->coordenadaY;
     
     return sqrt(pow(coordX - x1, 2) + pow(coordY - y1, 2));
 }

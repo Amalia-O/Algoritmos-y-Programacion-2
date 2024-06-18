@@ -82,8 +82,8 @@ public:
      * PRE: coordenadas validas.
      * POS: devuelve la parada mas cercana a las coordenadas.
     */
-    Parada * buscarParadaMasCercana(float coordX, float coodY);
-
+    Parada * buscarParadaMasCercana(double coordX, double coodY);
+    
 };
 
 #endif /* CIUDAD_H_ */

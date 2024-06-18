@@ -33,7 +33,7 @@ public:
      * PRE: parametros no nulos.
      * POS: inicia el objeto con ubicacion segun parametros, y lista de colectivos vacia
     */
-    Parada(float coordenadaX, float coordenadaY, std::string calle, unsigned int altitudPlano);
+    Parada(double coordenadaX, double coordenadaY, std::string calle, unsigned int altitudPlano);
     
     /*
      * PRE: -
@@ -81,7 +81,7 @@ public:
      * PRE: parametros no nulos.
      * POS: devuelve la distancia entre la parada y las coordenadas en modulo.
     */    
-   float calcularDistancia(float coordX,float coordY);
+   double calcularDistancia(double coordX, double coordY);
 
 } ;
 

@@ -99,7 +99,7 @@ public:
     unsigned int getCantidadDeParadas();
 
     //TODO agregar pre y pos
-    Parada * buscarParadaMasCercana(float coordenadaX, float coordenadaY);
+    Parada * buscarParadaMasCercana(double coordenadaX, double coordenadaY);
 
 
 } ;
