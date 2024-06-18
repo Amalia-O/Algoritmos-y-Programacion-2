@@ -57,6 +57,15 @@ Lista<Parada*> * Ciudad::buscarParadas(unsigned int colectivo) {
     return resultado;
 }
 
+unsigned int Ciudad::buscarCantidadDeParadasDeLinea(unsigned int colectivo) {
+    unsigned int resultado = 0;
+    this->barrios->iniciarCursor();
+    while(this->barrios->avanzarCursor()) {
+        //Busco para cada barrio la cantidad de paradas de la linea y sumo
+        resultado += this->barrios->obtenerCursor()->buscarCantidadDeParadasDeLinea(colectivo);
+    }
+    return resultado;
+}
 
 void Ciudad::agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Parada * parada){
     if (parada == NULL) {

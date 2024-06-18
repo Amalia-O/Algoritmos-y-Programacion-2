@@ -21,7 +21,7 @@
 
 using namespace std;
 
-void incisoUno() {
+void incisoUno(Ciudad * ciudad) {
 	//TODO implementar funcion
 	// 1) Listado de cantidad de paradas por barrio
 	// Falta hacer la parte de la consola donde se imprimen los resultados
@@ -30,12 +30,12 @@ void incisoUno() {
 	cout << "Accediste a inciso uno" << endl;
 }
 
-void incisoDos() {
+void incisoDos(Ciudad * ciudad) {
 	//TODO implementar funcion
 	cout << "Accediste a inciso dos" << endl;
 }
 
-void incisoTres() {
+void incisoTres(Ciudad * ciudad) {
 	//TODO implementar funcion
 	//3) Listado de paradas de una linea de colectivo
 	// Ya están todos los métodos de las clases programados
@@ -44,12 +44,28 @@ void incisoTres() {
 	// usar funcion Ciudad->buscarParadas(u int lineaDeColectivo)
 }
 
-void incisoCuatro() {
-	//TODO implementar funcion
-	cout << "Accediste a inciso cuatro" << endl;
+void incisoCuatro(Ciudad * ciudad) {
+	//TODO testear funcion
+	/*
+	 * Es bien sabido que numéricamente las líneas de colectivo más alta y baja
+	 * en la Ciudad de Buenos Aires es la 195 y 1 respectivamente.
+	 * Se buscará luego entre esos límites.
+	*/
+	unsigned int LINEA_BAJA = 1;
+	unsigned int LINEA_ALTA = 195;
+	unsigned int cantidad;
+	
+	for (unsigned int i = LINEA_BAJA; i <= LINEA_ALTA; i++)
+	{
+		cantidad = ciudad->buscarCantidadDeParadasDeLinea(i);
+		if (cantidad != 0) { //Si la cantidad es 0, no la imprimo.
+			cout << "Linea: " << i << "\t" << "Cantidad: " << cantidad << endl;
+		}
+	}
+	
 }
 
-void incisoCinco() {
+void incisoCinco(Ciudad * ciudad) {
 	//TODO implementar funcion
 	cout << "Accediste a inciso cinco" << endl;
 }
@@ -85,7 +101,7 @@ int consultaConsola() {
 /*
 POS : inicia la consola, por este medio se interactua con el usuario y aquí podrá este realizar sus consultas.
 */
-void iniciarConsola() {
+void iniciarConsola(Ciudad * ciudad) {
 	//Mensaje de inicio
 	cout << "+================================================+" << endl;
 	cout << "+           Algoritmos y Programación 2          +" << endl;
@@ -104,19 +120,19 @@ void iniciarConsola() {
 			seguirConsultando = false;
 			break;
 		case 1:
-			incisoUno();
+			incisoUno(ciudad);
 			break;
 		case 2:
-			incisoDos();
+			incisoDos(ciudad);
 			break;
 		case 3:
-			incisoTres();
+			incisoTres(ciudad);
 			break;
 		case 4:
-			incisoCuatro();
+			incisoCuatro(ciudad);
 			break;
 		case 5:
-			incisoCinco();
+			incisoCinco(ciudad);
 			break;
 		default:
 			cout << "Numero ingresado erróneo, ingresar del 1 al 5." << endl;

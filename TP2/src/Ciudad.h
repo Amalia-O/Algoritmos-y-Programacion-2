@@ -60,6 +60,12 @@ public:
     Lista<Parada*> * buscarParadas(unsigned int colectivo);
 
     /*
+     * PRE: parametro no nulo.
+     * POS: devuelve la cantidad de paradas de la linea de colectivos en todos los barrios.
+    */
+    unsigned int buscarCantidadDeParadasDeLinea(unsigned int colectivo);
+
+    /*
      * PRE: el barrio a agregar no esta en la lista.
      * POS: agrega el barrio al final de la lista.
     */

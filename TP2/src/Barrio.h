@@ -87,11 +87,18 @@ public:
     Lista<Parada*> * buscarParadasDeLinea(unsigned int colectivo);
 
     /*
+     * PRE: parametro no nulo.
+     * POS: devuelve la cantidad de paradas de la linea de colectivo en el barrio.
+    */
+    unsigned int buscarCantidadDeParadasDeLinea(unsigned int colectivo);
+
+    /*
      * PRE: -
      * POS: devuelve la cantidad total de paradas en el barrio.
     */
     unsigned int getCantidadDeParadas();
 
+    //TODO agregar pre y pos
     Parada * buscarParadaMasCercana(float coordenadaX, float coordenadaY);
 
 

@@ -66,6 +66,17 @@ Lista<Parada*> * Barrio::buscarParadasDeLinea(unsigned int colectivo) {
     return resultado;
 }
 
+unsigned int Barrio::buscarCantidadDeParadasDeLinea(unsigned int colectivo) {
+    if (colectivo == 0 ) {
+        throw "Ingresar linea de colectivo distinta de 0";
+    }
+    Lista<Parada*> * paradas = this->buscarParadasDeLinea(colectivo);
+    unsigned int resultado = paradas->getTamanio();
+    paradas->eliminarListaNoContenidos();
+    delete paradas;
+    return resultado; 
+}
+
 unsigned int Barrio::getCantidadDeParadas() {
     return this->paradas->getTamanio();
 }
