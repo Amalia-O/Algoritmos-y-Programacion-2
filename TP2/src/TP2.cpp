@@ -11,6 +11,7 @@
 #include<sstream>
 #include<fstream>
 #include<cstdlib>
+#include <iomanip>
 #define NOMBRE_ARCHIVO "paradas-de-colectivo.csv"
 
 #include"Lista.h"
@@ -28,7 +29,6 @@ POS: muestra por consola las distintas consultas posibles para realizar.
 int consultaConsola(unsigned int mensajeDeConsulta) {
 	/*
 	 * mensajeDeConsulta = 0 -> Elegir inciso a ejecutar
-	 * mensajeDeConsulta = 2 -> Ingresar coordenadas para inciso 2)
 	 * mensajeDeConsulta = 3 -> Ingresar linea de colect para inciso 3)
 	 * mensajeDeConsulta = 5 -> Ingresar Barrio y linea de colect para inciso 5)
 	*/
@@ -44,15 +44,13 @@ int consultaConsola(unsigned int mensajeDeConsulta) {
 		cout << "" << endl;
 		cout << "Ingrese un numero (-1 si desea salir): ";
 	}
-	else if (mensajeDeConsulta == 2) {
-		//TODO implementar mensaje inciso 2)
-		
-	} 
 	else if (mensajeDeConsulta == 3) {
 		cout << "============================================================================" << endl;
 		cout << "Ingrese una linea de colectivo para ejecutar inciso 3): ";
 	}
-	
+	else if (mensajeDeConsulta == 5) {
+		//TODO implementar mensaje de consulta inciso 5)
+	}
 	string consulta;
 	int numeroElegido;
 	cin >> consulta;
@@ -66,7 +64,6 @@ int consultaConsola(unsigned int mensajeDeConsulta) {
 	return numeroElegido;
 }
 
-
 void incisoUno(Ciudad * ciudad) {
 	// 1) Listado de cantidad de paradas por barrio
 	Barrio * barrio;
@@ -79,7 +76,48 @@ void incisoUno(Ciudad * ciudad) {
 
 void incisoDos(Ciudad * ciudad) {
 	//TODO implementar funcion
-	cout << "Accediste a inciso dos" << endl;
+	cout << "============================================================================" << endl;
+	//Primero pido las coordenadas que se busquen.
+	bool seguirPreguntando = true;
+	unsigned int cantidadDeNumeros = 0;
+	double coordenadas[2];
+	char nombreCoordenada;
+	while (cantidadDeNumeros < 2) {
+		if (cantidadDeNumeros == 0){
+			nombreCoordenada = 'X';
+		}
+		else if (cantidadDeNumeros == 1) {
+			nombreCoordenada = 'Y';
+		}
+		cout << "Ingrese la coordenada " << nombreCoordenada << " (punto decimal): ";
+		string consulta;
+		cin >> consulta;
+		try { //Intento castear la consulta a double.
+			coordenadas[cantidadDeNumeros] = atof(consulta.c_str());
+		}
+		catch (...){
+			//Si no puedo castear a double, salgo de la funcion.
+			cout << "Numero ingresado incorrecto." << endl;
+		}
+		cantidadDeNumeros++;
+	}
+	
+	//Busco la parada mas cercana a las coordenadas introducidas.
+	Parada * paradaMasCercana = ciudad->buscarParadaMasCercana(coordenadas[0], coordenadas[1]);
+	//Con las siguientes 2 lineas, cout imprime hasta 6 decimales.
+	std::cout << std::fixed;
+    std::cout << std::setprecision(6);
+	cout << " " << endl;
+	//Imprimo por consola la informacion relevante.
+	cout << "Parada mas cercana (a x=" << coordenadas[0] << ", y=" << coordenadas[1] << "):" << endl;
+	cout << "Direccion: " << paradaMasCercana->getUbicacion()->getCalle() << " " << paradaMasCercana->getUbicacion()->getAltitudPlano() << endl;
+	cout << "Sus coordenadas son x=" << paradaMasCercana->getUbicacion()->getCoordenadaX() << " e y=" << paradaMasCercana->getUbicacion()->getCoordenadaY() << "." << endl;
+	cout << "Linea/s de colectivo: ";
+	paradaMasCercana->getColectivos()->iniciarCursor();
+	while(paradaMasCercana->getColectivos()->avanzarCursor()) { //Imprimo todas las lineas de colectivo de la parada
+		cout << paradaMasCercana->getColectivos()->obtenerCursor() << " ";
+	}
+	cout << endl;
 }
 
 void incisoTres(Ciudad * ciudad) {
@@ -178,6 +216,7 @@ void iniciarConsola(Ciudad * ciudad) {
 
 int main() {
 
+	
 	/*	Se inicia por leer el archivo .csv y armar una lista con indice de barrios	
 		donde cada uno tiene una lista de paradas de colectivo						*/
 	ifstream archivo(NOMBRE_ARCHIVO);
@@ -262,7 +301,7 @@ int main() {
 
 	//}
 
-	//iniciarConsola(buenosAires);
+	iniciarConsola(buenosAires);
 
 	delete(parada);
 	delete(buenosAires);

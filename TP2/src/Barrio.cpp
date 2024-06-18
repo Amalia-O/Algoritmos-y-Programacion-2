@@ -86,19 +86,20 @@ Parada * Barrio::buscarParadaMasCercana(double coordenadaX, double coordenadaY){
 	Parada * parada;
 
 	double distancia, distanciaMinima=0;
-
+    bool seguirBuscando = true;
 	this->paradas->iniciarCursor();
-
-
-	while(this->paradas->avanzarCursor()){
+	while(this->paradas->avanzarCursor() && seguirBuscando){
 		parada = this->paradas->obtenerCursor();
 		distancia = this->paradas->obtenerCursor()->calcularDistancia(coordenadaX, coordenadaY);
 
 		if(distancia < distanciaMinima || distanciaMinima ==0){
 			distanciaMinima = distancia;
 			paradaMasCercana= parada;
-
 		}
+        if (distancia == 0) { //Chequeo el caso de distancia nula.
+            paradaMasCercana = parada;
+            seguirBuscando = false;
+        }
 	}
 
 	return paradaMasCercana;

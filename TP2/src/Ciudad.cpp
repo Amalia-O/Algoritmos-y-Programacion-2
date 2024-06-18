@@ -118,19 +118,21 @@ Parada* Ciudad::buscarParadaMasCercana(double coordX, double coordY){
     Parada * paradaMasCercana;
     double distancia = 0;
     double distanciaMinima = 0;
+    bool seguirBuscando = true;
     this->barrios->iniciarCursor();
-    while(this->barrios->avanzarCursor()) {
+    while(this->barrios->avanzarCursor() && seguirBuscando) {
         paradaAux = this->barrios->obtenerCursor()->buscarParadaMasCercana(coordX, coordY);
         if (paradaAux != NULL) {
             
         	distancia = paradaAux->calcularDistancia(coordX, coordY);
-        	//std::cout << distancia << std::endl;
-        	std::cout << "distancia =" << distancia << std::endl;
         	if (distanciaMinima == 0 || distancia < distanciaMinima) {
                 distanciaMinima = distancia;
                 paradaMasCercana = paradaAux;
             }
-
+            if (distancia == 0) {
+                paradaMasCercana = paradaAux;
+                seguirBuscando = false;
+            }
         }
     }
     return paradaMasCercana;
