@@ -21,6 +21,52 @@
 
 using namespace std;
 
+/*
+POS: muestra por consola las distintas consultas posibles para realizar.
+	 Se devuelve la consulta elegida.
+*/
+int consultaConsola(unsigned int mensajeDeConsulta) {
+	/*
+	 * mensajeDeConsulta = 0 -> Elegir inciso a ejecutar
+	 * mensajeDeConsulta = 2 -> Ingresar coordenadas para inciso 2)
+	 * mensajeDeConsulta = 3 -> Ingresar linea de colect para inciso 3)
+	 * mensajeDeConsulta = 5 -> Ingresar Barrio y linea de colect para inciso 5)
+	*/
+	if (mensajeDeConsulta == 0) {
+		//Mensaje de consulta
+		cout << "============================================================================" << endl;
+		cout << "Ingrese un numero del 1 al 5 para elegir alguna de las siguientes consultas:" << endl;
+		cout << "1) Listado de cantidad de paradas por barrio" << endl;
+		cout << "2) Parada más cercana a una coordenada ingresada por teclado" << endl;
+		cout << "3) Listado de paradas de una línea de colectivo" << endl;
+		cout << "4) Listado de cantidad de paradas por linea de colectivo" << endl;
+		cout << "5) Dado un barrio y una línea de colectivo, imprimir las paradas ordenadas por distancia." << endl;
+		cout << "" << endl;
+		cout << "Ingrese un numero (-1 si desea salir): ";
+	}
+	else if (mensajeDeConsulta == 2) {
+		//TODO implementar mensaje inciso 2)
+		
+	} 
+	else if (mensajeDeConsulta == 3) {
+		cout << "============================================================================" << endl;
+		cout << "Ingrese una linea de colectivo para ejecutar inciso 3): ";
+	}
+	
+	string consulta;
+	int numeroElegido;
+	cin >> consulta;
+	try { //Intento castear la consulta a int.
+		numeroElegido = atoi(consulta.c_str());
+	}
+	catch (...){
+		//Si no puedo castear a int, devuelvo -2 para volver a realizar la consulta.
+		numeroElegido = -2;
+	}
+	return numeroElegido;
+}
+
+
 void incisoUno(Ciudad * ciudad) {
 	//TODO implementar funcion
 	// 1) Listado de cantidad de paradas por barrio
@@ -36,16 +82,29 @@ void incisoDos(Ciudad * ciudad) {
 }
 
 void incisoTres(Ciudad * ciudad) {
-	//TODO implementar funcion
 	//3) Listado de paradas de una linea de colectivo
-	// Ya están todos los métodos de las clases programados
-	// Falta hacer la parte de la consola donde se pide la linea
-	// y se imprimen los resultados
-	// usar funcion Ciudad->buscarParadas(u int lineaDeColectivo)
+	//TODO falta agregar el barrio de cada parada (hay que cambiar las funciones para eso).
+	//y tal vez coordenadas y comuna
+	//Habría que buscar en cada carrio las paradas dentro de acá...
+	//(o sea 2 while anidados pero podría modularizar...)
+	int lineaDeColectivo = consultaConsola(3); //Pido al usuario la linea de colectivo.
+	if (lineaDeColectivo <= 0) {
+		cout << "Linea de colectivo ingresada errónea. Debe ser mayor a 0" << endl;
+	}
+	else {
+		Lista<Parada*> * paradas = ciudad->buscarParadas(lineaDeColectivo);
+		Parada * parada;
+		paradas->iniciarCursor();
+		while (paradas->avanzarCursor()) {
+			parada = paradas->obtenerCursor();
+			cout << "Calle: " << parada->getUbicacion()->getCalle() << "\t" << "AltPlano: " << parada->getUbicacion()->getAltitudPlano() << "\t" << endl;
+		}
+	}
+	
 }
 
 void incisoCuatro(Ciudad * ciudad) {
-	//TODO testear funcion
+	//4) Listado de cantidad de paradas por linea de colectivo
 	/*
 	 * Es bien sabido que numéricamente las líneas de colectivo más alta y baja
 	 * en la Ciudad de Buenos Aires es la 195 y 1 respectivamente.
@@ -54,7 +113,7 @@ void incisoCuatro(Ciudad * ciudad) {
 	unsigned int LINEA_BAJA = 1;
 	unsigned int LINEA_ALTA = 195;
 	unsigned int cantidad;
-	
+
 	for (unsigned int i = LINEA_BAJA; i <= LINEA_ALTA; i++)
 	{
 		cantidad = ciudad->buscarCantidadDeParadasDeLinea(i);
@@ -68,34 +127,6 @@ void incisoCuatro(Ciudad * ciudad) {
 void incisoCinco(Ciudad * ciudad) {
 	//TODO implementar funcion
 	cout << "Accediste a inciso cinco" << endl;
-}
-
-/*
-POS: muestra por consola las distintas consultas posibles para realizar.
-	 Se devuelve la consulta elegida.
-*/
-int consultaConsola() {
-	//Mensaje de consulta
-	cout << "============================================================================" << endl;
-	cout << "Ingrese un numero del 1 al 5 para elegir alguna de las siguientes consultas:" << endl;
-	cout << "1) Listado de cantidad de paradas por barrio" << endl;
-	cout << "2) Parada más cercana a una coordenada ingresada por teclado" << endl;
-	cout << "3) Listado de paradas de una línea de colectivo" << endl;
-	cout << "4) Listado de cantidad de paradas por linea de colectivo" << endl;
-	cout << "5) Dado un barrio y una línea de colectivo, imprimir las paradas ordenadas por distancia." << endl;
-	cout << "" << endl;
-	cout << "Ingrese un numero (-1 si desea salir): ";
-	string consulta;
-	int numeroElegido;
-	cin >> consulta;
-	try { //Intento castear la consulta a int.
-		numeroElegido = atoi(consulta.c_str());
-	}
-	catch (...){
-		//Si no puedo castear a int, devuelvo -2 para volver a realizar la consulta.
-		numeroElegido = -2;
-	}
-	return numeroElegido;
 }
 
 /*
@@ -113,7 +144,7 @@ void iniciarConsola(Ciudad * ciudad) {
 	bool seguirConsultando = true;
 	int numeroElegido;
 	while (seguirConsultando) {
-		numeroElegido = consultaConsola();
+		numeroElegido = consultaConsola(0); //Pido al usuario el inciso a ejecutar.
 		switch (numeroElegido)
 		{
 		case -1: //Dejar de buscar
@@ -229,6 +260,8 @@ int main() {
 	//	cout << buenosAires->getBarrios()->obtenerCursor()->getParadas()->obtenerCursor()->getUbicacion()->getCalle() << endl;
 
 	//}
+
+	iniciarConsola(buenosAires);
 
 	delete(parada);
 	delete(buenosAires);
