@@ -68,12 +68,13 @@ int consultaConsola(unsigned int mensajeDeConsulta) {
 
 
 void incisoUno(Ciudad * ciudad) {
-	//TODO implementar funcion
 	// 1) Listado de cantidad de paradas por barrio
-	// Falta hacer la parte de la consola donde se imprimen los resultados
-	// Recorrer todos los barrios de Ciudad
-	// y usar funcion Barrio->getCantidadDeParadas()
-	cout << "Accediste a inciso uno" << endl;
+	Barrio * barrio;
+	ciudad->getBarrios()->iniciarCursor();
+	while(ciudad->getBarrios()->avanzarCursor()) {
+		barrio = ciudad->getBarrios()->obtenerCursor();
+		cout << "Barrio: " << barrio->getNombre() << "\t" << "Paradas: " << barrio->getCantidadDeParadas() << endl;
+	}
 }
 
 void incisoDos(Ciudad * ciudad) {
