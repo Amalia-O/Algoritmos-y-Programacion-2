@@ -66,8 +66,8 @@ public:
     unsigned int buscarCantidadDeParadasDeLinea(unsigned int colectivo);
 
     /*
-     * PRE: el barrio a agregar no esta en la lista.
-     * POS: agrega el barrio al final de la lista.
+     * PRE: el barrio ya está en la lista.
+     * POS: agrega la parada al barrio al final de su lista de paradas.
     */
     void agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Parada *parada);
      
