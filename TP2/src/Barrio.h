@@ -98,7 +98,10 @@ public:
     */
     unsigned int getCantidadDeParadas();
 
-    //TODO agregar pre y pos
+    /*
+     * PRE: -
+     * POS: devuelve la parada más cercana en el barrio a las coordenadas proporcionadas.
+    */
     Parada * buscarParadaMasCercana(double coordenadaX, double coordenadaY);
 
 
