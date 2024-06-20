@@ -38,9 +38,9 @@ int consultaConsola(unsigned int mensajeDeConsulta) {
 		cout << "Ingrese un numero del 1 al 5 para elegir alguna de las siguientes consultas:" << endl;
 		cout << "1) Listado de cantidad de paradas por barrio" << endl;
 		cout << "2) Parada más cercana a una coordenada ingresada por teclado" << endl;
-		cout << "3) Listado de paradas de una línea de colectivo" << endl;
+		cout << "3) Listado de paradas de una linea de colectivo" << endl;
 		cout << "4) Listado de cantidad de paradas por linea de colectivo" << endl;
-		cout << "5) Dado un barrio y una línea de colectivo, imprimir las paradas ordenadas por distancia." << endl;
+		cout << "5) Dado un barrio y una linea de colectivo, imprimir las paradas ordenadas por distancia." << endl;
 		cout << "" << endl;
 		cout << "Ingrese un numero (-1 si desea salir): ";
 	}
@@ -128,7 +128,7 @@ void incisoTres(Ciudad * ciudad) {
 	//(o sea 2 while anidados pero podría modularizar...)
 	int lineaDeColectivo = consultaConsola(3); //Pido al usuario la linea de colectivo.
 	if (lineaDeColectivo <= 0) {
-		cout << "Linea de colectivo ingresada errónea. Debe ser mayor a 0" << endl;
+		cout << "Linea de colectivo ingresada erronea. Debe ser mayor a 0" << endl;
 	}
 	else {
 		Lista<Parada*> * paradas = ciudad->buscarParadas(lineaDeColectivo);
@@ -174,9 +174,9 @@ POS : inicia la consola, por este medio se interactua con el usuario y aquí pod
 void iniciarConsola(Ciudad * ciudad) {
 	//Mensaje de inicio
 	cout << "+================================================+" << endl;
-	cout << "+           Algoritmos y Programación 2          +" << endl;
-	cout << "+               Trabajo Práctico 2               +" << endl;
-	cout << "+     Autores: Iñaki Teira y Amalia Ochoa        +" << endl;
+	cout << "+           Algoritmos y Programacion 2          +" << endl;
+	cout << "+               Trabajo Practico 2               +" << endl;
+	cout << "+     Autores: Inaki Teira y Amalia Ochoa        +" << endl;
 	cout << "+================================================+" << endl;
 	cout << "" << endl;
 
@@ -205,7 +205,7 @@ void iniciarConsola(Ciudad * ciudad) {
 			incisoCinco(ciudad);
 			break;
 		default:
-			cout << "Numero ingresado erróneo, ingresar del 1 al 5." << endl;
+			cout << "Numero ingresado erroneo, ingresar del 1 al 5." << endl;
 			cout << "" << endl;
 			break;
 		}
@@ -279,27 +279,6 @@ int main() {
 		}
 
 	}
-
-	/*
-	 * inciso dos nashe
-	 */
-	// Parada * paradaMasCercana;
-	// paradaMasCercana = buenosAires->buscarParadaMasCercana(-58.376842, -34.60700);
-
-	// cout << paradaMasCercana->getUbicacion()->getCalle() << endl;
-	// cout << paradaMasCercana->getUbicacion()->getAltitudPlano() << endl;
-	// cout << paradaMasCercana->getUbicacion()->getCoordenadaX() << endl;
-	// cout << typeid(paradaMasCercana->getUbicacion()->getCoordenadaX()).name() << endl;
-	/*
-	 * si el test de abajo anduvo entonces anda todi
-	 */
-	//buenosAires->getBarrios()->iniciarCursor();
-	//while(buenosAires->getBarrios()->avanzarCursor()){
-	//	buenosAires->getBarrios()->obtenerCursor()->getParadas()->iniciarCursor();
-	//	while(buenosAires->getBarrios()->obtenerCursor()->getParadas()->avanzarCursor())
-	//	cout << buenosAires->getBarrios()->obtenerCursor()->getParadas()->obtenerCursor()->getUbicacion()->getCalle() << endl;
-
-	//}
 
 	iniciarConsola(buenosAires);
 
