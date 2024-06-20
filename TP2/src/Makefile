@@ -1,5 +1,5 @@
 programa.exe: *.cpp
-	g++ *.cpp -o programa.exe
+	g++ -ansi *.cpp -o programa.exe
 
 clean:
 	-rm *.o programa.exe
