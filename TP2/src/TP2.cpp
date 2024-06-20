@@ -37,7 +37,7 @@ int consultaConsola(unsigned int mensajeDeConsulta) {
 		cout << "============================================================================" << endl;
 		cout << "Ingrese un numero del 1 al 5 para elegir alguna de las siguientes consultas:" << endl;
 		cout << "1) Listado de cantidad de paradas por barrio" << endl;
-		cout << "2) Parada más cercana a una coordenada ingresada por teclado" << endl;
+		cout << "2) Parada mas cercana a una coordenada ingresada por teclado" << endl;
 		cout << "3) Listado de paradas de una linea de colectivo" << endl;
 		cout << "4) Listado de cantidad de paradas por linea de colectivo" << endl;
 		cout << "5) Dado un barrio y una linea de colectivo, imprimir las paradas ordenadas por distancia." << endl;
