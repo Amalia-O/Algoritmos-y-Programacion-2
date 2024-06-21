@@ -107,14 +107,6 @@ public:
 	 */
 	void concatenarLista(Lista<T> * lista);
 
-	/*
-	 * pre : -
-	 * post: Borra de memoria la lista pero NO sus contenidos.
-	 * 		 Útil si los contenidos de la lista1 pertenecen a otra lista2, y no se quiere eliminar
-	 * 		 los contenidos de la otra lista2, sino solo la referencia a esta lista1.
-	 */
-	void eliminarListaNoContenidos();
-
 private:
 
     /*
@@ -247,11 +239,6 @@ template<class T> void Lista<T>::concatenarLista(Lista<T> * lista) {
 	//Hago que la lista parametro apunte a NULL para no borrar sus contenidos, solo su referencia.
 	lista->primero = NULL;
 	delete lista;
-}
-
-template<class T> void Lista<T>::eliminarListaNoContenidos() {
-	this->primero = NULL;
-	delete this;
 }
 
 #endif /* LISTA_H_ */
