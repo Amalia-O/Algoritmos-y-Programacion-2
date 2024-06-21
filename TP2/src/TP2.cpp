@@ -225,6 +225,14 @@ void incisoCinco(Ciudad * ciudad) {
 		paradas->remover(posMasCercana);
 	}
 
+	delete(paradas);
+
+	cout << "Paradas ordenadas por distancia: " << endl;
+	paradasOrdenadas->iniciarCursor();
+	while(paradasOrdenadas->avanzarCursor()){
+		cout << "Direccion: " << paradasOrdenadas->obtenerCursor()->getUbicacion()->getCalle() <<" " << paradasOrdenadas->obtenerCursor()->getUbicacion()->getAltitudPlano() << endl;
+	}
+	delete(paradasOrdenadas);
 	
 	
 }
