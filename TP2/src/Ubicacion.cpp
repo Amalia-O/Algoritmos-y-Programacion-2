@@ -3,7 +3,6 @@
 #include<iostream>
 
 Ubicacion::Ubicacion(double coordenadaX, double coordenadaY, std::string calle, unsigned int altitudPlano) {
-    //TODO validar(?)
     this->coordenadaX = coordenadaX;
     this->coordenadaY = coordenadaY;
     this->calle = calle;

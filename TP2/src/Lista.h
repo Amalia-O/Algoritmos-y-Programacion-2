@@ -100,7 +100,6 @@ public:
 	 */
 	T obtenerCursor();
 
-	//TODO probar con valgrind que esta función no dé memory leaks (la programe para que no los tenga, pero talvez tiene...)
 	/*
 	 * pre : se proporciona una lista no vacia.
 	 * post: concatena los contenidos de la lista parámetro al final de

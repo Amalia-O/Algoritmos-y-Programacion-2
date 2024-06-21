@@ -30,7 +30,6 @@ int consultaConsola(unsigned int mensajeDeConsulta) {
 	/*
 	 * mensajeDeConsulta = 0 -> Elegir inciso a ejecutar
 	 * mensajeDeConsulta = 3 -> Ingresar linea de colect para inciso 3)
-	 * mensajeDeConsulta = 5 -> Ingresar Barrio y linea de colect para inciso 5)
 	*/
 	if (mensajeDeConsulta == 0) {
 		//Mensaje de consulta
@@ -47,9 +46,6 @@ int consultaConsola(unsigned int mensajeDeConsulta) {
 	else if (mensajeDeConsulta == 3) {
 		cout << "============================================================================" << endl;
 		cout << "Ingrese una linea de colectivo para ejecutar inciso 3): ";
-	}
-	else if (mensajeDeConsulta == 5) {
-		//TODO implementar mensaje de consulta inciso 5)
 	}
 	string consulta;
 	int numeroElegido;
@@ -179,10 +175,10 @@ void incisoCinco(Ciudad * ciudad) {
 	cout << "Ingrese el nombre del barrio: ";
 	cin >> nombreBarrio;
 
-	cout << "Ingrese la coordednada X de referencia ";
+	cout << "Ingrese la coordednada X de referencia: ";
 	cin >> coordenadaX;
 
-	cout << "Ingrese la coordednada Y de referencia ";
+	cout << "Ingrese la coordednada Y de referencia: ";
 	cin >> coordenadaY;
 
 	cout << "Ingrese la línea de colectivo: ";
