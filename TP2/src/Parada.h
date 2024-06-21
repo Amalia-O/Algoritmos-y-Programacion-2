@@ -30,8 +30,10 @@ public:
     Parada(Ubicacion * ubicacion);
 
     /*
-     * PRE: parametros no nulos.
-     * POS: inicia el objeto con ubicacion segun parametros, y lista de colectivos vacia
+     * PRE: -
+     * POS: inicia el objeto con ubicacion segun parametros, y lista de colectivos vacia.
+     * si calle es vacia, se asigna "Sin nombre".
+     * si altitudPlano es 0, se asigna 0.
     */
     Parada(double coordenadaX, double coordenadaY, std::string calle, unsigned int altitudPlano);
     

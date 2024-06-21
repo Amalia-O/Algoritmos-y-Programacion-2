@@ -15,6 +15,14 @@ Parada::Parada(Ubicacion * ubicacion) {
 }
 
 Parada::Parada(double coordenadaX, double coordenadaY, std::string calle, unsigned int altitudPlano) {
+   
+   if(calle == ""){
+    calle = "Sin nombre";
+   }
+   else if(altitudPlano == 0){
+    altitudPlano = 0;
+   }
+
     Ubicacion * ubicacion = new Ubicacion(coordenadaX, coordenadaY, calle, altitudPlano);
     this->ubicacion = ubicacion;
     this->colectivos = new Lista<unsigned int>();

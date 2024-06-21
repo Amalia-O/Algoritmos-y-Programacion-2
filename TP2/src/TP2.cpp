@@ -221,12 +221,11 @@ int main() {
 		donde cada uno tiene una lista de paradas de colectivo						*/
 	ifstream archivo(NOMBRE_ARCHIVO);
 
-	char delimitador = ',';
+	char delimitador = ','; //delimitador de campos
 
 	string linea, calle, direccion, nombreBarrio, barrioControl, coordX,
-		coordY, altPlano, comuna, L1, l1Sen;
-
-
+		coordY, altPlano, comuna, L1, l1Sen, buffer;
+	
 	Ciudad * buenosAires = new Ciudad();
 
 	//lectura del encabezado
@@ -235,48 +234,72 @@ int main() {
 	Parada * parada ;
 
 	while(getline(archivo, linea)){
-		stringstream stream(linea); //convierto cadena en stream
+		
+		stringstream stream(linea); //conversion cadena en stream
 
-		//extraigo todos los valores
-		getline(stream, calle, delimitador);
-		getline(stream, altPlano, delimitador);
-		getline(stream, direccion, delimitador);
-		getline(stream, coordX, delimitador);
-		getline(stream, coordY, delimitador);
-		getline(stream, comuna, delimitador);
-		getline(stream, nombreBarrio, delimitador);
+		getline(stream, calle, delimitador); //lectura de calle
 
-		if(altPlano ==""){
+		if(calle[0] == char(34)){ //si el campo tiene comillas
+			
+			getline(stream, buffer, char(34)); //se lee el campo completo
+			calle.append(buffer.erase(0,1)); //se elimina la primer comilla y se concatena el resto de la calle
+			getline(stream, buffer, delimitador); //se lee la coma delimitadora
+			
+		}
+		
+		getline(stream, altPlano, delimitador); //lectura de la altura
 
-			if(isdigit(direccion[0])){
-				for( int i =0; (i < direccion.size()) &&  (direccion[i]!= ' '); i++){
-					if(isdigit(direccion[i])){
-						altPlano+= direccion[i];
-					}
+		if(altPlano != ""){
+			altPlano.substr(1, altPlano.size()-2); //se elimina la primer y ultima comilla
+		
+		}
+
+		getline(stream, direccion, delimitador); //lectura de la direccion
+		if(direccion[0] == char(34)){ //si el campo tiene comillas
+			
+			getline(stream, buffer, char(34)); //se lee el campo completo
+			direccion.append(buffer.erase(0,1)); //se elimina la primer comilla y se concatena el resto de la direccion
+			getline(stream, buffer, delimitador); //se lee la coma delimitadora
+			
+		}
+
+		if(calle == ""){
+			for(int i = 0; i < direccion.size(); i++){
+				if(!isdigit(direccion[i])){
+					calle+= direccion[i];
+				
 				}
-			}else if(isdigit(direccion[direccion.size()-1])){
-				for( int i =direccion.size()-1 ; (i>0) &&  (direccion[i]!= ' '); i--){
-					if(isdigit(direccion[i])){
-						altPlano.insert(0,1, direccion[i]);
-					}
+			}
+		}else if(altPlano ==""){
+			for(int i = 0; i < direccion.size(); i++){
+				if(isdigit(direccion[i])){
+					altPlano+= direccion[i];
+				
 				}
 			}
 		}
 
-		parada = new Parada( atof(coordX.c_str()), atof(coordY.c_str()), calle, atof(altPlano.c_str()));
+		getline(stream, coordX, delimitador); //lectura de la coordenada x
+		getline(stream, coordY, delimitador); //lectura de la coordenada y
+		getline(stream, comuna, delimitador); //lectura de la comuna
+		if(comuna != ""){
+			comuna.substr(1, comuna.size()-2); //se elimina la primer y ultima comilla
+		
+		}
+		getline(stream, nombreBarrio, delimitador); //lectura del nombre del barrio
 
-		for(unsigned int i=0; i< 6; i++){
-			getline(stream, L1, delimitador);
-			getline(stream, l1Sen, delimitador);
+		parada = new Parada(atof(coordX.c_str()), atof(coordY.c_str()), calle, atoi(altPlano.c_str())); //creacion de la parada
+
+		for(unsigned int i=0;i <6 ; i++){
+			getline(stream, L1, delimitador); //lectura de la linea de colectivo
+			getline(stream, l1Sen, delimitador); //lectura de la direccion de la linea de colectivo
 			if(L1 != ""){
-				parada->agregarColectivo((unsigned int)atof(L1.c_str()));
+				L1.substr(1, L1.size()-2); //se elimina la primer y ultima comilla
+				parada->agregarColectivo(atoi(L1.c_str())); //se agrega la linea de colectivo a la parada
 			}
 		}
 
-
-		if(nombreBarrio != ""){
-			buenosAires->ubicarParada(nombreBarrio, (unsigned int)atoi(comuna.c_str()), parada);
-		}
+		buenosAires->ubicarParada(nombreBarrio, atoi(comuna.c_str()), parada); //se ubica la parada en el barrio correspondiente
 
 	}
 

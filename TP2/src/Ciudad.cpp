@@ -92,7 +92,7 @@ void Ciudad:: ubicarParada(std::string barrio, unsigned int comuna, Parada *para
         throw "Proporcionar parada no nula";
     }
     if (barrio == "") {
-        throw "Proporcionar nombre de barrio no vacio";
+        barrio = "Sin nombre";
     }
     if (comuna == 0) {
         throw "Proporcionar comuna distinta de 0";
