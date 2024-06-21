@@ -185,7 +185,7 @@ void incisoCinco(Ciudad * ciudad) {
 	cin >> lineaColectivo;
 
 	Barrio* barrio = ciudad->buscarBarrio(nombreBarrio);
-	if (barrio == nullptr) {
+	if (barrio == NULL) {
 		cout << "El barrio ingresado no existe." << endl;
 		return;
 	}
