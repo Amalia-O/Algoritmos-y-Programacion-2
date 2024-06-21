@@ -143,6 +143,16 @@ Parada* Ciudad::buscarParadaMasCercana(double coordX, double coordY){
 }
 
 
+Barrio* Ciudad::buscarBarrio(std::string nombre) {
+    this->barrios->iniciarCursor();
+    while (this->barrios->avanzarCursor()) {
+        if (nombre == this->barrios->obtenerCursor()->getNombre()) {
+            return this->barrios->obtenerCursor();
+        }
+    }
+    return nullptr; // Barrio not found
+}
+
 
 
 

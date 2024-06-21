@@ -84,6 +84,11 @@ public:
     */
     Parada * buscarParadaMasCercana(double coordX, double coodY);
     
+    /*
+     * PRE: el nombre del barrio no es nulo.
+     * POS: devuelve el barrio con el nombre especificado. Si no se encuentra, devuelve nullptr.
+     */
+    Barrio* buscarBarrio(std::string nombre);
 };
 
 #endif /* CIUDAD_H_ */

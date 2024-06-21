@@ -167,6 +167,66 @@ void incisoCuatro(Ciudad * ciudad) {
 void incisoCinco(Ciudad * ciudad) {
 	//TODO implementar funcion
 	cout << "Accediste a inciso cinco" << endl;
+
+	string nombreBarrio;
+	int lineaColectivo;
+	double coordenadaX, coordenadaY;
+
+	cout << "Ingrese el nombre del barrio: ";
+	cin >> nombreBarrio;
+
+	cout << "Ingrese la coordednada X de referencia ";
+	cin >> coordenadaX;
+
+	cout << "Ingrese la coordednada Y de referencia ";
+	cin >> coordenadaY;
+
+	cout << "Ingrese la línea de colectivo: ";
+	cin >> lineaColectivo;
+
+	Barrio* barrio = ciudad->buscarBarrio(nombreBarrio);
+	if (barrio == nullptr) {
+		cout << "El barrio ingresado no existe." << endl;
+		return;
+	}
+
+	Lista<Parada*>* paradas = barrio->buscarParadas(lineaColectivo);
+	if (paradas->estaVacia()) {
+		cout << "No se encontraron paradas para la línea de colectivo en el barrio." << endl;
+		return;
+	}
+	Lista <Parada*> * paradasOrdenadas = new Lista<Parada*>();
+	//Ordenar paradas por distancia
+
+	double distanciaReferencia, distanciaMinima;
+	unsigned int pos, posMasCercana;
+
+	while(!paradas->estaVacia()){
+
+		paradas->iniciarCursor();
+		pos =1;
+		distanciaMinima =0;
+
+		while(paradas->avanzarCursor()){
+
+			distanciaReferencia = paradas->obtenerCursor()->getUbicacion()->calcularDistancia(coordenadaX, coordenadaY);
+
+			if(distanciaReferencia < distanciaMinima || distanciaMinima ==0){
+				distanciaMinima = distanciaReferencia;
+				posMasCercana = pos;
+			}
+			pos++;
+			if(distanciaReferencia == 0){
+				break;
+			}
+		}
+
+		paradasOrdenadas ->agregar(paradas->obtener(posMasCercana));
+		paradas->remover(posMasCercana);
+	}
+
+	
+	
 }
 
 /*

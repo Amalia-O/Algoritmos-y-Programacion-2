@@ -109,3 +109,16 @@ Parada * Barrio::buscarParadaMasCercana(double coordenadaX, double coordenadaY){
 
 	return paradaMasCercana;
 }
+
+
+Lista<Parada*> * Barrio::buscarParadas(unsigned int colectivo) {
+    Lista<Parada*> * paradasEncontradas = new Lista<Parada*>();
+    this->paradas->iniciarCursor();
+    while (this->paradas->avanzarCursor()) {
+        Parada* parada = this->paradas->obtenerCursor();
+        if (parada->colectivoEsta(colectivo)) {
+            paradasEncontradas->agregar(parada);
+        }
+    }
+    return paradasEncontradas;
+}

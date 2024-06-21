@@ -79,7 +79,7 @@ public:
     void setAltitudPlano(unsigned int altitudPlano);
 
     /*
-     * PRE: parametros no nulo
+     * PRE: -
      * POS: devuelve la distancia en modulo
     */
     double calcularDistancia(double coordX, double coordY);

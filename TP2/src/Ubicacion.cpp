@@ -11,7 +11,7 @@ Ubicacion::Ubicacion(double coordenadaX, double coordenadaY, std::string calle, 
 }
 
 Ubicacion::~Ubicacion() {
-
+    
 }
 
 double Ubicacion::getCoordenadaX() {
