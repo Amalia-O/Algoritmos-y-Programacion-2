@@ -8,6 +8,10 @@ Ciudad::Ciudad() {
 }
 
 Ciudad::~Ciudad() {
+    this->barrios->iniciarCursor();
+    while(this->barrios->avanzarCursor()) {
+        delete this->barrios->obtenerCursor();
+    }
     delete this->barrios;
 }
 

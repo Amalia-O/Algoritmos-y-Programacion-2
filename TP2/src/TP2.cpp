@@ -305,7 +305,7 @@ int main() {
 
 	iniciarConsola(buenosAires);
 
-	delete(parada);
+	
 	delete(buenosAires);
 
 	archivo.close();

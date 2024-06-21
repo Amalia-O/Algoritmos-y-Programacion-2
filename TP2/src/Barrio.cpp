@@ -15,6 +15,11 @@ Barrio::Barrio(std::string nombre, unsigned int comuna) {
 }
 
 Barrio::~Barrio() {
+
+    this->paradas->iniciarCursor();
+    while(this->paradas->avanzarCursor()) {
+        delete this->paradas->obtenerCursor();
+    }
     delete this->paradas;
 }
 
