@@ -77,11 +77,13 @@ void incisoUno(Ciudad * ciudad) {
 void incisoDos(Ciudad * ciudad) {
 	// 2) Parada más cercana a una coordenada ingresada por teclado
 	cout << "============================================================================" << endl;
+	
 	//Primero pido las coordenadas que se busquen.
 	bool seguirPreguntando = true;
 	unsigned int cantidadDeNumeros = 0;
 	double coordenadas[2];
 	char nombreCoordenada;
+	
 	while (cantidadDeNumeros < 2) {
 		if (cantidadDeNumeros == 0){
 			nombreCoordenada = 'X';
@@ -89,6 +91,7 @@ void incisoDos(Ciudad * ciudad) {
 		else if (cantidadDeNumeros == 1) {
 			nombreCoordenada = 'Y';
 		}
+	
 		cout << "Ingrese la coordenada " << nombreCoordenada << " (punto decimal): ";
 		string consulta;
 		cin >> consulta;
@@ -104,16 +107,20 @@ void incisoDos(Ciudad * ciudad) {
 	
 	//Busco la parada mas cercana a las coordenadas introducidas.
 	Parada * paradaMasCercana = ciudad->buscarParadaMasCercana(coordenadas[0], coordenadas[1]);
+	
 	//Con las siguientes 2 lineas, cout imprime hasta 6 decimales.
 	std::cout << std::fixed;
     std::cout << std::setprecision(6);
 	cout << " " << endl;
+	
 	//Imprimo por consola la informacion relevante.
 	cout << "Parada mas cercana (a x=" << coordenadas[0] << ", y=" << coordenadas[1] << "):" << endl;
 	cout << "Direccion: " << paradaMasCercana->getUbicacion()->getCalle() << " " << paradaMasCercana->getUbicacion()->getAltitudPlano() << endl;
 	cout << "Sus coordenadas son x=" << paradaMasCercana->getUbicacion()->getCoordenadaX() << " e y=" << paradaMasCercana->getUbicacion()->getCoordenadaY() << "." << endl;
 	cout << "Linea/s de colectivo: ";
+	
 	paradaMasCercana->getColectivos()->iniciarCursor();
+	
 	while(paradaMasCercana->getColectivos()->avanzarCursor()) { //Imprimo todas las lineas de colectivo de la parada
 		cout << paradaMasCercana->getColectivos()->obtenerCursor() << " ";
 	}
@@ -122,10 +129,7 @@ void incisoDos(Ciudad * ciudad) {
 
 void incisoTres(Ciudad * ciudad) {
 	//3) Listado de paradas de una linea de colectivo
-	//TODO falta agregar el barrio de cada parada (hay que cambiar las funciones para eso).
-	//y tal vez coordenadas y comuna
-	//Habría que buscar en cada carrio las paradas dentro de acá...
-	//(o sea 2 while anidados pero podría modularizar...)
+
 	int lineaDeColectivo = consultaConsola(3); //Pido al usuario la linea de colectivo.
 	if (lineaDeColectivo <= 0) {
 		cout << "Linea de colectivo ingresada erronea. Debe ser mayor a 0" << endl;
@@ -165,7 +169,7 @@ void incisoCuatro(Ciudad * ciudad) {
 }
 
 void incisoCinco(Ciudad * ciudad) {
-	//TODO implementar funcion
+	//5) Dado un barrio y una linea de colectivo, imprimir las paradas ordenadas por distancia.
 	cout << "Accediste a inciso cinco" << endl;
 
 	string nombreBarrio;

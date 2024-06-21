@@ -86,7 +86,7 @@ public:
     
     /*
      * PRE: el nombre del barrio no es nulo.
-     * POS: devuelve el barrio con el nombre especificado. Si no se encuentra, devuelve nullptr.
+     * POS: devuelve el barrio con el nombre especificado. Si no se encuentra, devuelve NULL.
      */
     Barrio* buscarBarrio(std::string nombre);
 };
