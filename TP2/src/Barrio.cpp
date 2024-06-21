@@ -77,7 +77,7 @@ unsigned int Barrio::buscarCantidadDeParadasDeLinea(unsigned int colectivo) {
     }
     Lista<Parada*> * paradas = this->buscarParadasDeLinea(colectivo);
     unsigned int resultado = paradas->getTamanio();
-    paradas->eliminarListaNoContenidos(); //Elimina la lista pero no sus contenidos
+    delete paradas;
     return resultado; 
 }
 

@@ -138,6 +138,7 @@ void incisoTres(Ciudad * ciudad) {
 			parada = paradas->obtenerCursor();
 			cout << "Calle: " << parada->getUbicacion()->getCalle() << "\t" << "AltPlano: " << parada->getUbicacion()->getAltitudPlano() << "\t" << endl;
 		}
+		delete paradas;
 	}
 	
 }

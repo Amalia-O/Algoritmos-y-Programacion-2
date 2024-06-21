@@ -85,7 +85,7 @@ void Ciudad::agregarParadaAlBarrio(std::string barrio, unsigned int comuna, Para
 	this->getBarrios()->iniciarCursor();
 	while(this->getBarrios()->avanzarCursor()){
 
-		if(this->getBarrios()->obtenerCursor()->getNombre()== barrio  && this->getBarrios()->obtenerCursor()->getComuna()== comuna ){
+		if(this->getBarrios()->obtenerCursor()->getNombre()== barrio){
 			this->getBarrios()->obtenerCursor()->agregarParada(parada);
 		}
 	}
